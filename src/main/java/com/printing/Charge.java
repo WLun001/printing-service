@@ -1,13 +1,41 @@
 package com.printing;
 
 public class Charge {
+    private double currentCharge;
+    private int quantity;
 
-    public static double totalCharge(Order order){
-        return quantityCharge(order.getQuantity()) + optionCharge(order.getQuantity(),order.hasDesignEffect(), order.hasHighQualityPaper());
+    public Charge(){
     }
 
-    private static double quantityCharge(int quantity){
-        double unitPrice = 0.0;
+    public int getQuantity() {
+        return quantity;
+    }
+
+    public double getTotalCharge() {
+        return currentCharge + quantityCharge();
+    }
+
+
+    public void receiveOrder(Order order){
+        calculateCharge(order);
+        quantity ++;
+    }
+
+    public void submit(){
+        sentToPrinter();
+    }
+
+    private void sentToPrinter(){
+        PhotoPrinter printer = new PhotoPrinter();
+        printer.queueRequest();
+    }
+
+    private void calculateCharge(Order order) {
+        currentCharge += optionCharge(order.hasDesignEffect(), order.hasHighQualityPaper());
+    }
+
+    private double quantityCharge(){
+        double unitPrice;
         if (quantity < 5)
             unitPrice = 1.0;
         else if(quantity < 10)
@@ -18,14 +46,14 @@ public class Charge {
             unitPrice = 0.5;
         else
             unitPrice = 0.1;
-        return unitPrice * quantity;
+        return unitPrice + quantity;
     }
 
-    private static double optionCharge(int quantity, boolean hasDesignEffect, boolean hasQualityPaper){
-        return (quantity * checkOption(hasDesignEffect)) + (quantity * checkOption(hasQualityPaper));
+    private double optionCharge(boolean hasDesignEffect, boolean hasQualityPaper){
+        return checkOption(hasDesignEffect) + checkOption(hasQualityPaper);
     }
 
-    private static double checkOption(boolean option){
+    private double checkOption(boolean option){
         if (option) return 0.1; else return 0;
     }
 }
