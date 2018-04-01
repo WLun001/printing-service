@@ -1,4 +1,4 @@
-package main.java.com.printing;
+package com.printing;
 
 import java.util.UUID;
 
