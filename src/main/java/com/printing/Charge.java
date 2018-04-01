@@ -12,7 +12,7 @@ public class Charge {
     }
 
     public double getTotalCharge() {
-        return currentCharge + quantityCharge();
+        return Math.round((currentCharge + quantityCharge()) * 100.0) / 100.0;
     }
 
 
@@ -46,7 +46,7 @@ public class Charge {
             unitPrice = 0.5;
         else
             unitPrice = 0.1;
-        return unitPrice + quantity;
+        return unitPrice * quantity;
     }
 
     private double optionCharge(boolean hasDesignEffect, boolean hasQualityPaper){
