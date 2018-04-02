@@ -19,9 +19,6 @@ public class Charge {
     public void receiveOrder(Order order){
         calculateCharge(order);
         quantity ++;
-    }
-
-    public void submit(){
         sentToPrinter();
     }
 

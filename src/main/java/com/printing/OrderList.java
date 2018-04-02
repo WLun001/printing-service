@@ -26,7 +26,6 @@ public class OrderList implements IOrdersList {
         for (Order order : orders){
             charge.receiveOrder(order);
         }
-        charge.submit();
     }
 
     @Override

@@ -13,19 +13,16 @@ public class PrintForm {
     private JTextArea price;
 
     public PrintForm() {
-        printButton.addActionListener(new ActionListener() {
-            @Override
-            public void actionPerformed(ActionEvent e) {
-                int quantity = Integer.valueOf(textField1.getText());
-                boolean hasHighQualityPaper = highQualityPaperCheckBox.isSelected();
-                boolean hasDesignEffect = designEffectCheckBox.isSelected();
-                OrderList orderList = new OrderList();
-                for (int i = 0; i < quantity; i++){
-                    orderList.addOrder(hasHighQualityPaper, hasDesignEffect);
-                }
-                orderList.submitOrder();
-                price.setText("RM: " + String.valueOf(orderList.getTotalCharge()));
+        printButton.addActionListener(e -> {
+            int quantity = Integer.valueOf(textField1.getText());
+            boolean hasHighQualityPaper = highQualityPaperCheckBox.isSelected();
+            boolean hasDesignEffect = designEffectCheckBox.isSelected();
+            OrderList orderList = new OrderList();
+            for (int i = 0; i < quantity; i++){
+                orderList.addOrder(hasHighQualityPaper, hasDesignEffect);
             }
+            orderList.submitOrder();
+            price.setText("RM: " + String.valueOf(orderList.getTotalCharge()));
         });
     }
 
