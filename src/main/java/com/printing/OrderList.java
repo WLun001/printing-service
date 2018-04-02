@@ -22,9 +22,13 @@ public class OrderList implements IOrdersList {
 
     @Override
     public void submitOrder() {
-         charge = new Charge();
-        for (Order order : orders){
-            charge.receiveOrder(order);
+        if (orders == null){
+            throw new IllegalArgumentException("Order cannot be null");
+        } else {
+            charge = new Charge();
+            for (Order order : orders) {
+                charge.receiveOrder(order);
+            }
         }
     }
 
