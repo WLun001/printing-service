@@ -22,8 +22,8 @@ public class OrderList implements IOrdersList {
 
     @Override
     public void submitOrder() {
-        if (orders == null){
-            throw new IllegalArgumentException("Order cannot be null");
+        if (orders.size() == 0){
+            throw new IllegalArgumentException("Order cannot be zero");
         } else {
             charge = new Charge();
             for (Order order : orders) {
