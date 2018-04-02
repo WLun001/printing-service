@@ -28,7 +28,7 @@ public class Charge {
     }
 
     private void calculateCharge(Order order) {
-        currentCharge += optionCharge(order.hasDesignEffect(), order.hasHighQualityPaper());
+        currentCharge += optionCharge(order.hasHighQualityPaper(), order.hasDesignEffect());
     }
 
     private double quantityCharge(){
@@ -50,8 +50,8 @@ public class Charge {
         }
     }
 
-    private double optionCharge(boolean hasDesignEffect, boolean hasQualityPaper){
-        return checkOption(hasDesignEffect) + checkOption(hasQualityPaper);
+    private double optionCharge(boolean hasQualityPaper, boolean hasDesignEffect){
+        return checkOption(hasQualityPaper) + checkOption(hasDesignEffect);
     }
 
     private double checkOption(boolean option){
