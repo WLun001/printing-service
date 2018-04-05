@@ -1,8 +1,9 @@
-package com.printing;
+package com.printing.ui;
+
+import com.printing.domain.AppController;
+import com.printing.domain.OrderList;
 
 import javax.swing.*;
-import java.awt.event.ActionEvent;
-import java.awt.event.ActionListener;
 
 public class PrintForm {
     private JPanel panel1;
@@ -17,12 +18,12 @@ public class PrintForm {
             int quantity = Integer.valueOf(textField1.getText());
             boolean hasHighQualityPaper = highQualityPaperCheckBox.isSelected();
             boolean hasDesignEffect = designEffectCheckBox.isSelected();
-            OrderList orderList = new OrderList();
+            AppController controller = new AppController();
             for (int i = 0; i < quantity; i++){
-                orderList.addOrder(hasHighQualityPaper, hasDesignEffect);
+                controller.addOrder(hasHighQualityPaper, hasDesignEffect);
             }
-            orderList.submitOrder();
-            price.setText("RM: " + String.valueOf(orderList.getTotalCharge()));
+            controller.submitOrder();
+            price.setText("RM: " + String.valueOf(controller.getTotalCharge()));
         });
     }
 

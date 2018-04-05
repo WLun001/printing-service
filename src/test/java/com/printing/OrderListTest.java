@@ -1,5 +1,6 @@
 package com.printing;
 
+import com.printing.domain.OrderList;
 import junitparams.JUnitParamsRunner;
 import junitparams.Parameters;
 import org.junit.Before;
