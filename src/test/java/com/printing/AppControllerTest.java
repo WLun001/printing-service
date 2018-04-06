@@ -5,8 +5,10 @@ import com.printing.domain.Order;
 import com.printing.domain.OrderList;
 import org.junit.Test;
 import org.junit.runner.RunWith;
+import org.mockito.InOrder;
 import org.mockito.InjectMocks;
 import org.mockito.Mock;
+import org.mockito.Mockito;
 import org.mockito.internal.matchers.Or;
 import org.mockito.runners.MockitoJUnitRunner;
 
@@ -24,11 +26,23 @@ public class AppControllerTest {
     OrderList od;
 
     @Test
-    public void testAddOrder() {
+    public void testAddOrderInvokedCount() {
         Order order = new Order(true, true);
         ac.addOrder(order);
         ac.addOrder(order);
         verify(od, times(2)).addOrder(order);
+    }
+
+    @Test
+    public void testAddOrderInvokedSequence() {
+        Order order1 = new Order(true, true);
+        Order order2 = new Order(false, false);
+        ac.addOrder(order1);
+        ac.addOrder(order2);
+        InOrder inOrder = Mockito.inOrder(od);
+        inOrder.verify(od).addOrder(order1);
+        inOrder.verify(od).addOrder(order2);
+
     }
 
     @Test
