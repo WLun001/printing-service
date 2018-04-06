@@ -17,6 +17,10 @@ public class Charge {
 
 
     public void receiveOrder(Order order){
+
+        if(order == null)
+            throw new IllegalArgumentException("Order cannot be null");
+
         calculateCharge(order);
         quantity ++;
         sentToPrinter();
