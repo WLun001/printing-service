@@ -7,7 +7,7 @@ public class Order {
     private boolean highQualityPaper;
     private boolean designEffect;
 
-    public Order(boolean highQualityPaper, boolean designEffect){
+    public Order(boolean highQualityPaper, boolean designEffect) {
         this.id = UUID.randomUUID().toString();
         this.highQualityPaper = highQualityPaper;
         this.designEffect = designEffect;
@@ -17,11 +17,11 @@ public class Order {
         return id;
     }
 
-    public boolean hasHighQualityPaper(){
+    public boolean hasHighQualityPaper() {
         return highQualityPaper;
     }
 
-    public boolean hasDesignEffect(){
+    public boolean hasDesignEffect() {
         return designEffect;
     }
 }

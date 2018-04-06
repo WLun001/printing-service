@@ -1,6 +1,7 @@
 package com.printing.ui;
 
 import com.printing.domain.AppController;
+import com.printing.domain.Order;
 import com.printing.domain.OrderList;
 
 import javax.swing.*;
@@ -20,7 +21,7 @@ public class PrintForm {
             boolean hasDesignEffect = designEffectCheckBox.isSelected();
             AppController controller = new AppController();
             for (int i = 0; i < quantity; i++){
-                controller.addOrder(hasHighQualityPaper, hasDesignEffect);
+                controller.addOrder(new Order(hasHighQualityPaper, hasDesignEffect));
             }
             controller.submitOrder();
             price.setText("RM: " + String.valueOf(controller.getTotalCharge()));

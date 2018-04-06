@@ -1,19 +1,18 @@
 package com.printing.domain;
 
 import java.util.ArrayList;
-import java.util.List;
 
 public class OrderList implements IOrdersList {
     private ArrayList<Order> orders;
     private Charge charge;
 
-    public OrderList(){
+    public OrderList() {
         orders = new ArrayList<>();
     }
 
     @Override
-    public void addOrder(boolean hasHighQualityPaper, boolean hasDesignEffect) {
-        orders.add(new Order(hasHighQualityPaper, hasDesignEffect));
+    public void addOrder(Order order) {
+        orders.add(order);
     }
 
     @Override
@@ -23,7 +22,7 @@ public class OrderList implements IOrdersList {
 
     @Override
     public void submitOrder() {
-        if (orders.size() == 0){
+        if (orders.size() == 0) {
             throw new IllegalArgumentException("Order cannot be zero");
         } else {
             charge = new Charge();

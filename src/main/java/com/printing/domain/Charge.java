@@ -4,7 +4,7 @@ public class Charge {
     private double currentCharge;
     private int quantity;
 
-    public Charge(){
+    public Charge() {
     }
 
     public int getQuantity() {
@@ -16,17 +16,17 @@ public class Charge {
     }
 
 
-    public void receiveOrder(Order order){
+    public void receiveOrder(Order order) {
 
-        if(order == null)
+        if (order == null)
             throw new IllegalArgumentException("Order cannot be null");
 
         calculateCharge(order);
-        quantity ++;
+        quantity++;
         sentToPrinter();
     }
 
-    private void sentToPrinter(){
+    private void sentToPrinter() {
         PhotoPrinter printer = new PhotoPrinter();
         printer.queueRequest();
     }
@@ -35,7 +35,7 @@ public class Charge {
         currentCharge += calculateOptionCharge(order.hasHighQualityPaper(), order.hasDesignEffect());
     }
 
-    private double calculateQuantityCharge(){
+    private double calculateQuantityCharge() {
         if (quantity <= 0)
             throw new IllegalArgumentException("Quantity cannot be zero");
         else {
@@ -54,11 +54,12 @@ public class Charge {
         }
     }
 
-    private double calculateOptionCharge(boolean hasQualityPaper, boolean hasDesignEffect){
+    private double calculateOptionCharge(boolean hasQualityPaper, boolean hasDesignEffect) {
         return checkOption(hasQualityPaper) + checkOption(hasDesignEffect);
     }
 
-    private double checkOption(boolean option){
-        if (option) return 0.1; else return 0;
+    private double checkOption(boolean option) {
+        if (option) return 0.1;
+        else return 0;
     }
 }
