@@ -7,5 +7,4 @@ interface IOrdersList {
     int getNumberOfOrders();
     void submitOrder();
     double getTotalCharge();
-    List<Order> getOrderList();
 }

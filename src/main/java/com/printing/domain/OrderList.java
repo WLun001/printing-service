@@ -37,9 +37,4 @@ public class OrderList implements IOrdersList {
     public double getTotalCharge() {
         return charge.getTotalCharge();
     }
-
-    @Override
-    public List<Order> getOrderList() {
-        return orders;
-    }
 }

@@ -18,10 +18,7 @@ public class AppController {
     public void submitOrder(){
         ordersList.submitOrder();
     }
-    public double getTotalCharge(){
+    public double getTotalCharge() {
         return ordersList.getTotalCharge();
-    }
-    public List<Order> getOrderList() {
-        return ordersList.getOrderList();
     }
 }
