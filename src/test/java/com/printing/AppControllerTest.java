@@ -46,6 +46,13 @@ public class AppControllerTest {
     }
 
     @Test
+    public void testGetOrderList() {
+        ac.addOrder(new Order(true, false));
+        int quantity = ac.getNumberOfOrders();
+        verify(od, times(1)).getNumberOfOrders();
+    }
+
+    @Test
     public void testGetNumberOfOrders() {
         for (int i = 0; i < 10; i++) {
             ac.addOrder(new Order(true, true));
