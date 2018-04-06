@@ -12,7 +12,7 @@ public class Charge {
     }
 
     public double getTotalCharge() {
-        return Math.round((currentCharge + quantityCharge()) * 100.0) / 100.0;
+        return Math.round((currentCharge + calculateQuantityCharge()) * 100.0) / 100.0;
     }
 
 
@@ -28,10 +28,10 @@ public class Charge {
     }
 
     private void calculateCharge(Order order) {
-        currentCharge += optionCharge(order.hasHighQualityPaper(), order.hasDesignEffect());
+        currentCharge += calculateOptionCharge(order.hasHighQualityPaper(), order.hasDesignEffect());
     }
 
-    private double quantityCharge(){
+    private double calculateQuantityCharge(){
         if (quantity <= 0)
             throw new IllegalArgumentException("Quantity cannot be zero");
         else {
@@ -50,7 +50,7 @@ public class Charge {
         }
     }
 
-    private double optionCharge(boolean hasQualityPaper, boolean hasDesignEffect){
+    private double calculateOptionCharge(boolean hasQualityPaper, boolean hasDesignEffect){
         return checkOption(hasQualityPaper) + checkOption(hasDesignEffect);
     }
 

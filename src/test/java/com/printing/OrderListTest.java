@@ -30,7 +30,7 @@ public class OrderListTest {
     }
 
     @Test(expected = IllegalArgumentException.class)
-    public void testAddOrdersInvalidValues() {
+    public void testSubmitOrderInvalidValues() {
         od.submitOrder();
     }
 
