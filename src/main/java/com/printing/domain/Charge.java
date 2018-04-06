@@ -36,22 +36,20 @@ public class Charge {
     }
 
     private double calculateQuantityCharge() {
-        if (quantity <= 0)
-            throw new IllegalArgumentException("Quantity cannot be zero");
-        else {
-            double unitPrice;
-            if (quantity < 5)
-                unitPrice = 1.0;
-            else if (quantity < 10)
-                unitPrice = 0.9;
-            else if (quantity < 20)
-                unitPrice = 0.7;
-            else if (quantity < 50)
-                unitPrice = 0.5;
-            else
-                unitPrice = 0.1;
-            return unitPrice * quantity;
-        }
+
+        double unitPrice;
+        if (quantity < 5)
+            unitPrice = 1.0;
+        else if (quantity < 10)
+            unitPrice = 0.9;
+        else if (quantity < 20)
+            unitPrice = 0.7;
+        else if (quantity < 50)
+            unitPrice = 0.5;
+        else
+            unitPrice = 0.1;
+        return unitPrice * quantity;
+
     }
 
     private double calculateOptionCharge(boolean hasQualityPaper, boolean hasDesignEffect) {
