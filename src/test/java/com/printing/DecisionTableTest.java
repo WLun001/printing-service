@@ -1,5 +1,6 @@
 package com.printing;
 
+import com.printing.domain.Order;
 import com.printing.domain.OrderList;
 import junitparams.JUnitParamsRunner;
 import junitparams.Parameters;
@@ -23,7 +24,7 @@ public class DecisionTableTest {
     @Parameters(method = "getParamsForTestAddOrdersValidValues")
     public void testAddOrdersValidValues(int quantity, boolean hasHighQualityPaper, boolean hasDesignEffect, double expectedTotalPrice) {
         for(int i = 0; i < quantity; i++)
-            od.addOrder(hasHighQualityPaper, hasDesignEffect);
+            od.addOrder(new Order(hasHighQualityPaper, hasDesignEffect));
         od.submitOrder();
         double result = od.getTotalCharge();
         assertEquals(expectedTotalPrice, result, 0);

@@ -1,6 +1,7 @@
 package com.printing;
 
 import com.printing.domain.AppController;
+import com.printing.domain.Order;
 import com.printing.domain.OrderList;
 import org.junit.Test;
 import org.junit.runner.RunWith;
@@ -23,15 +24,15 @@ public class AppControllerTest {
 
     @Test
     public void testAddOrder() {
-        ac.addOrder(true, true);
-        ac.addOrder(true, true);
-        verify(od, times(2)).addOrder(true, true);
+        ac.addOrder(new Order(true, true));
+        ac.addOrder(new Order(true, true));
+        verify(od, times(2)).addOrder(new Order(true, true));
     }
 
     @Test
     public void testGetNumberOfOrders() {
         for (int i = 0; i < 10; i++) {
-            ac.addOrder(true, true);
+            ac.addOrder(new Order(true, true));
         }
         int numOfOrders = ac.getNumberOfOrders();
         verify(od, times(1)).getNumberOfOrders();
@@ -39,7 +40,7 @@ public class AppControllerTest {
 
     @Test
     public void testSubmitOrder() {
-        ac.addOrder(true, true);
+        ac.addOrder(new Order(true, true));
         ac.submitOrder();
         ac.submitOrder();
         verify(od, times(2)).submitOrder();
@@ -47,7 +48,7 @@ public class AppControllerTest {
 
     @Test
     public void testGetTotalCharge() {
-        ac.addOrder(true, true);
+        ac.addOrder(new Order(true, true));
         ac.submitOrder();
         ac.getTotalCharge();
         verify(od, times(1)).getTotalCharge();

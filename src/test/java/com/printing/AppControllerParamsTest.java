@@ -1,6 +1,7 @@
 package com.printing;
 
 import com.printing.domain.AppController;
+import com.printing.domain.Order;
 import junitparams.JUnitParamsRunner;
 import junitparams.Parameters;
 import org.junit.Before;
@@ -20,7 +21,7 @@ public class AppControllerParamsTest {
     @Test(expected = IllegalArgumentException.class)
     @Parameters(method = "getParamsForAddOrderInvalidValues")
     public void testAddOrderInvalidValues(boolean hasHighQualityPaper, boolean hasDesignEffect ) {
-        ac.addOrder(hasHighQualityPaper, hasDesignEffect);
+        ac.addOrder(new Order(hasHighQualityPaper, hasDesignEffect));
     }
 
     public Object[] getParamsForAddOrderInvalidValues(){
