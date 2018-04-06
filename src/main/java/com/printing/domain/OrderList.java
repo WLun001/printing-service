@@ -1,6 +1,7 @@
 package com.printing.domain;
 
 import java.util.ArrayList;
+import java.util.List;
 
 public class OrderList implements IOrdersList {
     private ArrayList<Order> orders;
@@ -35,5 +36,10 @@ public class OrderList implements IOrdersList {
     @Override
     public double getTotalCharge() {
         return charge.getTotalCharge();
+    }
+
+    @Override
+    public List<Order> getOrderList() {
+        return orders;
     }
 }

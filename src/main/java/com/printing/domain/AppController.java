@@ -1,5 +1,7 @@
 package com.printing.domain;
 
+import java.util.List;
+
 public class AppController {
     private IOrdersList ordersList;
 
@@ -7,8 +9,8 @@ public class AppController {
         this.ordersList = new OrderList();
     }
 
-    public void addOrder(boolean hasHighQualityPaper, boolean hasDesignEffec){
-        ordersList.addOrder(hasHighQualityPaper, hasDesignEffec);
+    public void addOrder(boolean hasHighQualityPaper, boolean hasDesignEffect){
+        ordersList.addOrder(hasHighQualityPaper, hasDesignEffect);
     }
     public int getNumberOfOrders(){
         return ordersList.getNumberOfOrders();
@@ -18,5 +20,8 @@ public class AppController {
     }
     public double getTotalCharge(){
         return ordersList.getTotalCharge();
+    }
+    public List<Order> getOrderList() {
+        return ordersList.getOrderList();
     }
 }
