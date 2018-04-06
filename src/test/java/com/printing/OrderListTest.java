@@ -1,21 +1,39 @@
 package com.printing;
 
+import com.printing.domain.Order;
 import com.printing.domain.OrderList;
 import junitparams.JUnitParamsRunner;
-import junitparams.Parameters;
 import org.junit.Before;
 import org.junit.Test;
 import org.junit.runner.RunWith;
+import static org.mockito.Mockito.*;
+import static org.junit.Assert.*;
 
-import static junit.framework.TestCase.assertEquals;
 
 @RunWith(JUnitParamsRunner.class)
 public class OrderListTest {
 
+    private OrderList od;
+
+    @Before
+    public void setup() {
+        od = new OrderList();
+    }
+
+    @Test
+    public void testAddOrder() {
+        Order oMock = mock(Order.class);
+        od.addOrder(oMock);
+        assertSame(od.getOrderList().get(0), oMock);
+
+    }
+
     @Test(expected = IllegalArgumentException.class)
     public void testSubmitOrderInvalidValues() {
-        OrderList od = new OrderList();
+        od = new OrderList();
         od.submitOrder();
     }
+
+
 
 }

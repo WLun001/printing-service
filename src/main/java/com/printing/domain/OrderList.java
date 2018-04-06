@@ -1,6 +1,7 @@
 package com.printing.domain;
 
 import java.util.ArrayList;
+import java.util.List;
 
 public class OrderList implements IOrdersList {
     private ArrayList<Order> orders;
@@ -13,6 +14,11 @@ public class OrderList implements IOrdersList {
     @Override
     public void addOrder(Order order) {
         orders.add(order);
+    }
+
+    @Override
+    public List<Order> getOrderList() {
+        return orders;
     }
 
     @Override
