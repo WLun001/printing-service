@@ -15,9 +15,17 @@ import static org.mockito.Mockito.*;
 public class AppControllerTest {
 
     @InjectMocks
+    private
     AppController ac = new AppController();
     @Mock
+    private
     OrderList od;
+    @Test
+    public void testAddOrder(){
+        ac.addOrder(true, true);
+        ac.addOrder(true, true);
+        verify(od, times(2)).addOrder(true, true);
+    }
 
     @Test
     public void testSubmitOrder() {
@@ -26,9 +34,4 @@ public class AppControllerTest {
         ac.submitOrder();
         verify(od,times(2)).submitOrder();
     }
-
-
-
-
-
 }
