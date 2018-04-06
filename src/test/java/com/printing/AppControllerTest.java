@@ -7,6 +7,7 @@ import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.mockito.InjectMocks;
 import org.mockito.Mock;
+import org.mockito.internal.matchers.Or;
 import org.mockito.runners.MockitoJUnitRunner;
 
 import static org.mockito.Mockito.times;
@@ -24,9 +25,10 @@ public class AppControllerTest {
 
     @Test
     public void testAddOrder() {
-        ac.addOrder(new Order(true, true));
-        ac.addOrder(new Order(true, true));
-        verify(od, times(2)).addOrder(new Order(true, true));
+        Order order = new Order(true, true);
+        ac.addOrder(order);
+        ac.addOrder(order);
+        verify(od, times(2)).addOrder(order);
     }
 
     @Test
