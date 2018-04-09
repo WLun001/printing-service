@@ -1,27 +1,32 @@
 package com.printing.domain;
 
+import java.util.ArrayList;
+import java.util.List;
 import java.util.UUID;
 
 public class Order {
     private String id;
-    private boolean highQualityPaper;
-    private boolean designEffect;
+    private IRequestList requestList;
+    private double totalCharge;
 
-    public Order(boolean highQualityPaper, boolean designEffect) {
+    public Order() {
         this.id = UUID.randomUUID().toString();
-        this.highQualityPaper = highQualityPaper;
-        this.designEffect = designEffect;
+        requestList = new RequestList();
     }
 
-    public String getId() {
-        return id;
+    public void addRequest(Request request){
+        requestList.addRequest(request);
     }
 
-    public boolean hasHighQualityPaper() {
-        return highQualityPaper;
+    public double getTotalCharge() {
+        return totalCharge;
     }
 
-    public boolean hasDesignEffect() {
-        return designEffect;
+    public void setTotalCharge(double totalCharge) {
+        this.totalCharge = totalCharge;
+    }
+
+    public ArrayList<Request> getRequestList() {
+        return requestList.getRequestList();
     }
 }

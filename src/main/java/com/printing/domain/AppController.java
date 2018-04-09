@@ -3,25 +3,28 @@ package com.printing.domain;
 import java.util.List;
 
 public class AppController {
-    private IOrdersList ordersList;
+    private Order order;
+    private Computation charge;
 
     public AppController(){
-        this.ordersList = new OrderList();
+        order = new Order();
+        charge = new Computation();
     }
 
-    public void addOrder(Order order){
-        ordersList.addOrder(order);
+    public void addRequest(Request request){
+        order.addRequest(request);
     }
-    public List<Order> getOrderList() {
-        return ordersList.getOrderList();
+    public List<Request> getRequestList() {
+        return order.getRequestList();
     };
-    public int getNumberOfOrders(){
-        return ordersList.getNumberOfOrders();
+    public int getNumberOfRequest(){
+        return order.getRequestList().size();
     }
-    public void submitOrder(){
-        ordersList.submitOrder();
+    public void submitRequest(){
+        charge.receiveRequest(order.getRequestList());
+        order.setTotalCharge(charge.getTotalCharge());
     }
     public double getTotalCharge() {
-        return ordersList.getTotalCharge();
+        return order.getTotalCharge();
     }
 }
