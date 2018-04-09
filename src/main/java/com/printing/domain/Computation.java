@@ -17,20 +17,18 @@ public class Computation {
         return requestsQuantity;
     }
 
-    public void receiveRequests(ArrayList<Request> requestList) {
-        if (requestList == null)
+    public void receiveRequests(ArrayList<Request> requests) {
+        if (requests == null)
             throw new IllegalArgumentException("Request list cannot be null");
 
-        for (Request request : requestList) {
-            totalCharge += calculateCharge(request);
-        }
+        totalCharge += calculateCharge(requests);
 
-        this.requestsQuantity = requestList.size();
+        this.requestsQuantity = requests.size();
     }
 
-    private double calculateCharge(Request request) {
-        double quantityCharge = calculateQuantityCharge(request.getQuantity());
-        double optionCharge = calculateOptionCharge(request.hasHighQualityPaper(), request.hasDesignEffect());
+    private double calculateCharge(ArrayList<Request> requests) {
+        double quantityCharge = calculateQuantityCharge(getTotalQuantity(requests));
+        double optionCharge = getOptionCharge(requests);
         return quantityCharge + optionCharge;
     }
 
@@ -47,6 +45,23 @@ public class Computation {
         else
             unitPrice = 0.1;
         return unitPrice * quantity;
+    }
+
+    private int getTotalQuantity(ArrayList<Request> requests) {
+        int quantity = 0;
+        for(Request request: requests) {
+            quantity += request.getQuantity();
+        }
+        return quantity;
+    }
+
+    private double getOptionCharge(ArrayList<Request> requests) {
+        double optionCharge = 0.0;
+        for(Request request: requests) {
+            for(int i = 0; i < request.getQuantity(); i++)
+                optionCharge += calculateOptionCharge(request.hasHighQualityPaper(), request.hasDesignEffect());
+        }
+        return optionCharge;
     }
 
     private double calculateOptionCharge(boolean hasQualityPaper, boolean hasDesignEffect) {

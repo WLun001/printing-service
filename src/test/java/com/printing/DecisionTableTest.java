@@ -34,7 +34,8 @@ public class DecisionTableTest {
     @Test
     @Parameters(method = "getParamsForTestAddMultipleRequestsValidValues")
     public void testAddMultipleRequestsValidValues(int requestQty, int paperQty, boolean hasHighQualityPaper, boolean hasDesignEffect, double expectedTotalPrice) {
-        appController.addRequest(new Request(paperQty, hasHighQualityPaper, hasDesignEffect));
+        for(int i = 0; i < requestQty; i++)
+            appController.addRequest(new Request(paperQty, hasHighQualityPaper, hasDesignEffect));
         appController.submitRequest();
         double result = appController.getTotalCharge();
         assertEquals(expectedTotalPrice, result, 0);
@@ -56,8 +57,10 @@ public class DecisionTableTest {
     public Object[] getParamsForTestAddMultipleRequestsValidValues() {
         return new Object[] {
                 new Object[] {1,1,true,false,1.1},
-                new Object[] {4,4,true,false,16.4},
-                new Object[] {10,5,true,false,50.6}
+                new Object[] {4,4,true,false,12.8},
+                new Object[] {10,5,true,false,10.0}
         };
     }
 }
+
+// TODO add testing for quantity 50
