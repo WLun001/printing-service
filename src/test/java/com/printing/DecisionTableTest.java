@@ -1,6 +1,9 @@
 package com.printing;
 
+import com.printing.domain.AppController;
 import com.printing.domain.Order;
+import com.printing.domain.Request;
+import com.printing.domain.RequestList;
 import junitparams.JUnitParamsRunner;
 import junitparams.Parameters;
 import org.junit.Before;
@@ -12,24 +15,32 @@ import static junit.framework.TestCase.assertEquals;
 @RunWith(JUnitParamsRunner.class)
 public class DecisionTableTest {
 
-    private OrderList od;
+    private AppController appController;
 
     @Before
     public void setup() {
-        od = new OrderList();
+        appController = new AppController();
     }
 
     @Test
-    @Parameters(method = "getParamsForTestAddOrdersValidValues")
-    public void testAddOrdersValidValues(int quantity, boolean hasHighQualityPaper, boolean hasDesignEffect, double expectedTotalPrice) {
-        for(int i = 0; i < quantity; i++)
-            od.addOrder(new Order(hasHighQualityPaper, hasDesignEffect));
-        od.submitOrder();
-        double result = od.getTotalCharge();
+    @Parameters(method = "getParamsForTestAddOneRequestsValidValues")
+    public void testAddOneRequestsValidValues(int quantity, boolean hasHighQualityPaper, boolean hasDesignEffect, double expectedTotalPrice) {
+        appController.addRequest(new Request(quantity, hasHighQualityPaper, hasDesignEffect));
+        appController.submitRequest();
+        double result = appController.getTotalCharge();
         assertEquals(expectedTotalPrice, result, 0);
     }
 
-    public Object[] getParamsForTestAddOrdersValidValues() {
+    @Test
+    @Parameters(method = "getParamsForTestAddMultipleRequestsValidValues")
+    public void testAddMultipleRequestsValidValues(int requestQty, int paperQty, boolean hasHighQualityPaper, boolean hasDesignEffect, double expectedTotalPrice) {
+        appController.addRequest(new Request(paperQty, hasHighQualityPaper, hasDesignEffect));
+        appController.submitRequest();
+        double result = appController.getTotalCharge();
+        assertEquals(expectedTotalPrice, result, 0);
+    }
+
+    public Object[] getParamsForTestAddOneRequestsValidValues() {
         return new Object[] {
                 new Object[] {1,true,false,1.1}, new Object[] {4,true,false,4.4}, new Object[] {5,true,false,5.0}, new Object[] {9,true,false,9.0},
                 new Object[] {10,true,false,8.0}, new Object[] {19,true,false,15.2}, new Object[] {20,true,false,12.0}, new Object[] {49,true,false,29.4},
@@ -39,6 +50,14 @@ public class DecisionTableTest {
                 new Object[] {10,false,false,7.0}, new Object[] {19,false,false,13.3}, new Object[] {20,false,false,10.0}, new Object[] {49,false,false,24.5},
                 new Object[] {1,false,true,1.1}, new Object[] {4,false,true,4.4}, new Object[] {5,false,true,5.0}, new Object[] {9,false,true,9.0},
                 new Object[] {10,false,true,8.0}, new Object[] {19,false,true,15.2}, new Object[] {20,false,true,12.0}, new Object[] {49,false,true,29.4}
+        };
+    }
+
+    public Object[] getParamsForTestAddMultipleRequestsValidValues() {
+        return new Object[] {
+                new Object[] {1,1,true,false,1.1},
+                new Object[] {4,4,true,false,16.4},
+                new Object[] {10,5,true,false,50.6}
         };
     }
 }

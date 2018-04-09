@@ -12,15 +12,15 @@ import static junit.framework.TestCase.assertNotNull;
 @RunWith(JUnitParamsRunner.class)
 public class OrderTest {
 
-    @Test
-    @Parameters(method = "getParamsForTestPaperOption")
-
-
-    @Test
-    public void testGetId() {
-       Order order = new Order(true, true);
-       assertNotNull(order.getId());
-    }
+//    @Test
+//    @Parameters(method = "getParamsForTestPaperOption")
+//
+//
+//    @Test
+//    public void testGetId() {
+//       Order order = new Order(true, true);
+//       assertNotNull(order.getId());
+//    }
 
 
 
