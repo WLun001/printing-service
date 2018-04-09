@@ -10,10 +10,14 @@ public class Request {
     private int quantity;
 
     public Request(int quantity, boolean highQualityPaper, boolean designEffect) {
-        this.id = UUID.randomUUID().toString();
-        this.quantity = quantity;
-        this.highQualityPaper = highQualityPaper;
-        this.designEffect = designEffect;
+        if(quantity <= 0)
+            throw new IllegalArgumentException("Quantity cannot be zero");
+        else {
+            this.id = UUID.randomUUID().toString();
+            this.quantity = quantity;
+            this.highQualityPaper = highQualityPaper;
+            this.designEffect = designEffect;
+        }
     }
 
     public String getId() {

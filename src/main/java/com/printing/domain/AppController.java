@@ -24,7 +24,7 @@ public class AppController {
     }
 
     public void submitRequest() {
-        charge.receiveRequest(order.getRequestList());
+        charge.receiveRequests(order.getRequestList());
         order.setTotalCharge(charge.getTotalCharge());
     }
 

@@ -1,17 +1,20 @@
 package com.printing;
 
 import com.printing.domain.Computation;
-import com.printing.domain.Order;
+import com.printing.domain.Request;
 import junitparams.JUnitParamsRunner;
 import junitparams.Parameters;
 import org.junit.Before;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 
+import java.lang.reflect.Array;
+import java.util.ArrayList;
+
 import static junit.framework.TestCase.assertEquals;
 
 @RunWith(JUnitParamsRunner.class)
-public class ChargeTest {
+public class ComputationTest {
 
     private Computation charge;
 
@@ -22,16 +25,18 @@ public class ChargeTest {
 
     @Test
     @Parameters(method = "getParamsForTestReceiveOrder")
-    public void testReceiveOrdersValidValues(int quantity) {
+    public void testReceiveRequestsValidValues(int quantity) {
         for(int i = 0; i < quantity; i++) {
-            charge.receiveOrder(new Order(true, true));
+            ArrayList<Request> requests = new ArrayList<>();
+            requests.add(new Request(1, true, true));
+            charge.receiveRequests(requests);
         }
-        assertEquals(quantity, charge.getQuantity());
+        assertEquals(quantity, charge.getRequestsQuantity());
     }
 
     @Test(expected = IllegalArgumentException.class)
-    public void testReceiveOrdersInvalidValues() {
-        charge.receiveOrder(null);
+    public void testReceiveRequestsInvalidValues() {
+        charge.receiveRequests(null);
     }
 
     public Object[] getParamsForTestReceiveOrder() {

@@ -4,6 +4,7 @@ import java.util.ArrayList;
 
 public class Computation {
     private double totalCharge;
+    private int requestsQuantity;
 
     public Computation() {
     }
@@ -12,13 +13,19 @@ public class Computation {
         return Math.round((totalCharge) * 100.0) / 100.0;
     }
 
-    public void receiveRequest(ArrayList<Request> requestList) {
+    public int getRequestsQuantity() {
+        return requestsQuantity;
+    }
+
+    public void receiveRequests(ArrayList<Request> requestList) {
         if (requestList == null)
-            throw new IllegalArgumentException("Request cannot be null");
+            throw new IllegalArgumentException("Request list cannot be null");
 
         for (Request request : requestList) {
             totalCharge += calculateCharge(request);
         }
+
+        this.requestsQuantity = requestList.size();
     }
 
     private double calculateCharge(Request request) {
