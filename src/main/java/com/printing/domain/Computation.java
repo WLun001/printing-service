@@ -23,7 +23,7 @@ public class Computation {
 
     private double calculateCharge(Request request) {
         double quantityCharge = calculateQuantityCharge(request.getQuantity());
-       double optionCharge = calculateOptionCharge(request.hasHighQualityPaper(), request.hasDesignEffect());
+        double optionCharge = calculateOptionCharge(request.hasHighQualityPaper(), request.hasDesignEffect());
         return quantityCharge + optionCharge;
     }
 

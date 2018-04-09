@@ -1,7 +1,6 @@
 package com.printing.domain;
 
 import java.util.ArrayList;
-import java.util.List;
 import java.util.UUID;
 
 public class Order {
@@ -14,7 +13,7 @@ public class Order {
         requestList = new RequestList();
     }
 
-    public void addRequest(Request request){
+    public void addRequest(Request request) {
         requestList.addRequest(request);
     }
 
