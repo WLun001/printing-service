@@ -13,20 +13,14 @@ public class PrintForm {
     private JTextField textField1;
     private JCheckBox designEffectCheckBox;
     private JTextArea price;
+    private AppController controller = new AppController();
 
     public PrintForm() {
         printButton.addActionListener(e -> {
             int quantity = Integer.valueOf(textField1.getText());
             boolean hasHighQualityPaper = highQualityPaperCheckBox.isSelected();
             boolean hasDesignEffect = designEffectCheckBox.isSelected();
-            AppController controller = new AppController();
             controller.addRequest(new Request(quantity,hasHighQualityPaper, hasDesignEffect));
-            controller.submitRequest();
-            price.setText("Current Charge: RM " + String.valueOf(controller.getTotalCharge()));
-
-            textField1.setText("");
-            highQualityPaperCheckBox.setSelected(false);
-            designEffectCheckBox.setSelected(false);
 
             int dialog = JOptionPane
                     .showConfirmDialog(null,
@@ -34,9 +28,12 @@ public class PrintForm {
                             "Attention", JOptionPane.YES_NO_OPTION);
 
             if (dialog == 0) {
-                System.out.print("si");
+                textField1.setText("");
+                highQualityPaperCheckBox.setSelected(false);
+                designEffectCheckBox.setSelected(false);
             } else {
-                System.out.print("no");
+                controller.submitRequest();
+                price.setText("Total Charge: RM " + String.valueOf(controller.getTotalCharge()));
             }
         });
     }
