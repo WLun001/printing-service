@@ -20,6 +20,7 @@ import static org.mockito.Mockito.verify;
 public class AppControllerTest {
 
     private Request request;
+
     @Before
     public void setup() {
         request = new Request(10, true, false);

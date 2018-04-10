@@ -6,13 +6,26 @@ package com.printing;
  import com.printing.domain.RequestList;
  import junitparams.JUnitParamsRunner;
  import junitparams.Parameters;
-import org.junit.Test;
+ import org.junit.Before;
+ import org.junit.Test;
 import org.junit.runner.RunWith;
  import org.mockito.InjectMocks;
  import org.mockito.Mock;
+ import org.mockito.runners.MockitoJUnitRunner;
 
-@RunWith(JUnitParamsRunner.class)
+ import static junit.framework.TestCase.assertEquals;
+ import static org.mockito.Mockito.times;
+ import static org.mockito.Mockito.verify;
+
+@RunWith(MockitoJUnitRunner.class)
 public class OrderTest {
+
+    private Request request;
+
+    @Before
+    public void setup() {
+        request = new Request(10, true, false);
+    }
 
     @InjectMocks
     private Order order = new Order();
@@ -21,11 +34,14 @@ public class OrderTest {
 
     @Test
     public void testAddRequest() {
-        order.addRequest(new Request(10, true, true));
-
+        order.addRequest(request);
+        verify(requestList, times(1)).addRequest(request);
     }
 
-
-
-
+    @Test
+    public void testSetAndGetTotalCharge() {
+        Order order1 = new Order();
+        order1.setTotalCharge(20.0);
+        assertEquals(20.0, order1.getTotalCharge());
+    }
 }
