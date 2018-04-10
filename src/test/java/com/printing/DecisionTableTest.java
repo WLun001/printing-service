@@ -24,8 +24,8 @@ public class DecisionTableTest {
 
     @Test
     @Parameters(method = "getParamsForTestAddOneRequestsValidValues")
-    public void testAddOneRequestsValidValues(int quantity, boolean hasHighQualityPaper, boolean hasDesignEffect, double expectedTotalPrice) {
-        appController.addRequest(new Request(quantity, hasHighQualityPaper, hasDesignEffect));
+    public void testAddOneRequestsValidValues(int paperQty, boolean hasHighQualityPaper, boolean hasDesignEffect, double expectedTotalPrice) {
+        appController.addRequest(new Request(paperQty, hasHighQualityPaper, hasDesignEffect));
         appController.submitRequest();
         double result = appController.getTotalCharge();
         assertEquals(expectedTotalPrice, result, 0);
@@ -39,6 +39,13 @@ public class DecisionTableTest {
         appController.submitRequest();
         double result = appController.getTotalCharge();
         assertEquals(expectedTotalPrice, result, 0);
+    }
+
+    @Test(expected = IllegalArgumentException.class)
+    @Parameters(method = "getParamsForTestAddOneRequestInvalidValue")
+    public void testAddOneRequestInvalidValues(int paperQty, boolean hasHighQualityPaper, boolean hasDesignEffect) {
+        appController.addRequest(new Request(paperQty, hasHighQualityPaper, hasDesignEffect));
+        appController.submitRequest();
     }
 
     public Object[] getParamsForTestAddOneRequestsValidValues() {
@@ -65,6 +72,13 @@ public class DecisionTableTest {
                 new Object[] {10,5,true,false,10.0}
         };
     }
-}
 
-// TODO add testing for quantity 50
+    public Object[] getParamsForTestAddOneRequestInvalidValue() {
+        return new Object[] {
+                new Object[] {0,true,false}, new Object[] {101,true,false},
+                new Object[] {0,true,true}, new Object[] {101,true,true},
+                new Object[] {0,false,false}, new Object[] {101,false,false},
+                new Object[] {0,false,true}, new Object[] {101,false,true}
+        };
+    }
+}
