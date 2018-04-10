@@ -1,26 +1,30 @@
 package com.printing;
 
-import com.printing.domain.Order;
-import junitparams.JUnitParamsRunner;
-import junitparams.Parameters;
+ import com.printing.domain.AppController;
+ import com.printing.domain.Order;
+ import com.printing.domain.Request;
+ import com.printing.domain.RequestList;
+ import junitparams.JUnitParamsRunner;
+ import junitparams.Parameters;
 import org.junit.Test;
 import org.junit.runner.RunWith;
-
-import static junit.framework.TestCase.assertEquals;
-import static junit.framework.TestCase.assertNotNull;
+ import org.mockito.InjectMocks;
+ import org.mockito.Mock;
 
 @RunWith(JUnitParamsRunner.class)
 public class OrderTest {
 
-//    @Test
-//    @Parameters(method = "getParamsForTestPaperOption")
-//
-//
-//    @Test
-//    public void testGetId() {
-//       Order order = new Order(true, true);
-//       assertNotNull(order.getId());
-//    }
+    @InjectMocks
+    private Order order = new Order();
+    @Mock
+    private RequestList requestList;
+
+    @Test
+    public void testAddRequest() {
+        order.addRequest(new Request(10, true, true));
+
+    }
+
 
 
 

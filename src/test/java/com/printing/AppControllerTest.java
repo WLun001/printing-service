@@ -1,6 +1,7 @@
 package com.printing;
 
 import com.printing.domain.*;
+import org.junit.Before;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.mockito.InOrder;
@@ -18,6 +19,12 @@ import static org.mockito.Mockito.verify;
 @RunWith(MockitoJUnitRunner.class)
 public class AppControllerTest {
 
+    private Request request;
+    @Before
+    public void setup() {
+        request = new Request(10, true, false);
+    }
+
     @InjectMocks
     private
     AppController ac = new AppController();
@@ -30,7 +37,6 @@ public class AppControllerTest {
      */
     @Test
     public void testAddRequestInvokedCount() {
-        Request request = new Request(5, false, true);
         ac.addRequest(request);
         ac.addRequest(request);
         verify(order, times(2)).addRequest(request);
@@ -55,7 +61,7 @@ public class AppControllerTest {
      */
     @Test
     public void testGetRequestList() {
-        ac.addRequest(new Request(5, true, false));
+        ac.addRequest(request);
         List<Request> requests = ac.getRequestList();
         verify(order, times(1)).getRequestList();
     }
@@ -68,7 +74,7 @@ public class AppControllerTest {
     public void testGetNumberOfRequest() {
         AppController controller = new AppController();
         for (int i = 0; i < 10; i++) {
-            controller.addRequest(new Request(20, true, true));
+            controller.addRequest(request);
         }
         assertEquals(10, controller.getNumberOfRequest());
     }
@@ -80,9 +86,9 @@ public class AppControllerTest {
     @Test
     public void testSubmitRequest() {
         AppController controller = new AppController();
-        controller.addRequest(new Request(5, true, false));
+        controller.addRequest(request);
         controller.submitRequest();
-        assertEquals(5.0, controller.getTotalCharge());
+        assertEquals(8.0, controller.getTotalCharge());
     }
 
     /**
@@ -90,7 +96,7 @@ public class AppControllerTest {
      */
     @Test
     public void testGetTotalCharge() {
-        ac.addRequest(new Request(5, true, false));
+        ac.addRequest(request);
         ac.submitRequest();
         ac.getTotalCharge();
         verify(order, times(1)).getTotalCharge();
