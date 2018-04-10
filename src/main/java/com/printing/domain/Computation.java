@@ -42,8 +42,10 @@ public class Computation {
             unitPrice = 0.7;
         else if (quantity < 50)
             unitPrice = 0.5;
-        else
+        else if (quantity <= 100)
             unitPrice = 0.1;
+        else
+            throw new IllegalArgumentException("Cannot more than 100 papers");
         return unitPrice * quantity;
     }
 
