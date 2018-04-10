@@ -26,8 +26,8 @@ public class ComputationTest {
     @Test
     @Parameters(method = "getParamsForTestReceiveOrder")
     public void testReceiveRequestsValidValues(int quantity) {
+        ArrayList<Request> requests = new ArrayList<>();
         for(int i = 0; i < quantity; i++) {
-            ArrayList<Request> requests = new ArrayList<>();
             requests.add(new Request(1, true, true));
             charge.receiveRequests(requests);
         }
