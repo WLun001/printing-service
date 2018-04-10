@@ -39,7 +39,7 @@ public class OrderTest {
     }
 
     /**
-     * Test the method inside setTotalCharge and getTotalCharge can be executed in an appropriate way
+     * Test the method inside setTotalCharge and getTotalCharge can be executed appropriately
      */
     @Test
     public void testSetAndGetTotalCharge() {

@@ -22,6 +22,9 @@ public class ComputationTest {
         charge = new Computation();
     }
 
+    /**
+     * Test the method receiveRequest can be executed appropriately by comparing quantity of requests
+     */
     @Test
     @Parameters(method = "getParamsForTestReceiveOrder")
     public void testReceiveRequestsValidValues(int quantity) {
@@ -33,6 +36,9 @@ public class ComputationTest {
         assertEquals(quantity, charge.getRequestsQuantity());
     }
 
+    /**
+     * Test the method receiveRequest with invalid values
+     */
     @Test(expected = IllegalArgumentException.class)
     public void testReceiveRequestsInvalidValues() {
         charge.receiveRequests(null);
