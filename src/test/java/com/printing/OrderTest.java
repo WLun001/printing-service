@@ -1,11 +1,8 @@
 package com.printing;
 
- import com.printing.domain.AppController;
  import com.printing.domain.Order;
  import com.printing.domain.Request;
  import com.printing.domain.RequestList;
- import junitparams.JUnitParamsRunner;
- import junitparams.Parameters;
  import org.junit.Before;
  import org.junit.Test;
 import org.junit.runner.RunWith;
@@ -32,12 +29,18 @@ public class OrderTest {
     @Mock
     private RequestList requestList;
 
+    /**
+     * Test the method inside addRequest had been run one time
+     */
     @Test
     public void testAddRequest() {
         order.addRequest(request);
         verify(requestList, times(1)).addRequest(request);
     }
 
+    /**
+     * Test the method inside setTotalCharge and getTotalCharge can be executed in an appropriate way
+     */
     @Test
     public void testSetAndGetTotalCharge() {
         Order order1 = new Order();
