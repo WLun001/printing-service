@@ -27,8 +27,8 @@ public class DecisionTableTest {
 
     @BeforeClass
     public static void readFromTextFile() {
-        String validFileName = "/home/wlun/Desktop/decisionTableValid.txt";
-        String invalidFileName = "/home/wlun/Desktop/decisionTableInvalid.txt";
+        String validFileName = "./res/decisionTableValid.txt";
+        String invalidFileName = "./res/decisionTableInvalid.txt";
         validValues = new ArrayList<>();
         invalidValues = new ArrayList<>();
         readFile(validValues, validFileName);
@@ -115,7 +115,7 @@ public class DecisionTableTest {
 //                new Object[]{50, false, true, 10.0}, new Object[]{51, false, true, 10.2}, new Object[]{99, false, true, 19.8}, new Object[]{100, false, true, 20.0},
 //        };
 //    }
-    
+
     public Object[] getParamsForTestAddMultipleRequestsValidValues() {
         return new Object[]{
                 new Object[]{1, 1, true, false, 1.1},
