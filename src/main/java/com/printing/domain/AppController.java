@@ -1,21 +1,22 @@
 package com.printing.domain;
 
+import java.util.ArrayList;
 import java.util.List;
 
 public class AppController {
     private Order order;
-    private Computation charge;
+    private Computation computation;
 
     public AppController() {
         order = new Order();
-        charge = new Computation();
+        computation = new Computation();
     }
 
     public void addRequest(Request request) {
         order.addRequest(request);
     }
 
-    public List<Request> getRequestList() {
+    public ArrayList<Request> getRequestList() {
         return order.getRequestList();
     }
 
@@ -24,8 +25,8 @@ public class AppController {
     }
 
     public void submitRequest() {
-        charge.receiveRequests(order.getRequestList());
-        order.setTotalCharge(charge.getTotalCharge());
+        computation.receiveRequests(order.getRequestList());
+        order.setTotalCharge(computation.getTotalCharge());
     }
 
     public double getTotalCharge() {

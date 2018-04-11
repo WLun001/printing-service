@@ -79,6 +79,13 @@ public class DecisionTableTest {
         assertEquals(expectedTotalPrice, result, 0);
     }
 
+    @Test(expected = IllegalArgumentException.class)
+    @Parameters(method = "getParamsForTestAddOneRequestInvalidValue")
+    public void testAddOneRequestInvalidValues(int paperQty, boolean hasHighQualityPaper, boolean hasDesignEffect) {
+        appController.addRequest(new Request(paperQty, hasHighQualityPaper, hasDesignEffect));
+        appController.submitRequest();
+    }
+
 //    public Object[] getParamsForTestAddOneRequestsValidValues() {
 //        return new Object[]{
 //                new Object[]{1, true, false, 1.1}, new Object[]{4, true, false, 4.4}, new Object[]{5, true, false, 5.0}, new Object[]{9, true, false, 9.0},
@@ -96,6 +103,7 @@ public class DecisionTableTest {
 //        };
 //    }
 
+
     public Object[] getParamsForTestAddMultipleRequestsValidValues() {
         return new Object[]{
                 new Object[]{1, 1, true, false, 1.1},
@@ -103,6 +111,13 @@ public class DecisionTableTest {
                 new Object[]{10, 5, true, false, 10.0}
         };
     }
-}
 
-// TODO add testing for quantity 50
+    public Object[] getParamsForTestAddOneRequestInvalidValue() {
+        return new Object[] {
+                new Object[] {0,true,false}, new Object[] {101,true,false},
+                new Object[] {0,true,true}, new Object[] {101,true,true},
+                new Object[] {0,false,false}, new Object[] {101,false,false},
+                new Object[] {0,false,true}, new Object[] {101,false,true}
+        };
+    }
+}
