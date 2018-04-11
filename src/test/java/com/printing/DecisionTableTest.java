@@ -20,25 +20,19 @@ import static junit.framework.TestCase.assertEquals;
 @RunWith(JUnitParamsRunner.class)
 public class DecisionTableTest {
 
-    private static ArrayList<String[]> values;
+    private static ArrayList<String[]> validValues;
+    private static ArrayList<String[]> invalidValues;
     private static Scanner inputStream = null;
     private AppController appController;
 
     @BeforeClass
     public static void readFromTextFile() {
-        String fileName = "/home/wlun/Desktop/decisionTable.txt";
-        values = new ArrayList<>();
-        System.out.println("Reading test values from file " + fileName + "\n");
-        try {
-            inputStream = new Scanner(new File(fileName));
-            while (inputStream.hasNextLine()) {
-                values.add(inputStream.nextLine().split(","));
-            }
-            System.out.println(values.size() + "");
-        } catch (FileNotFoundException e) {
-            System.out.println("Error opening the file " + fileName);
-            System.exit(0);
-        }
+        String validFileName = "/home/wlun/Desktop/decisionTableValid.txt";
+        String invalidFileName = "/home/wlun/Desktop/decisionTableInvalid.txt";
+        validValues = new ArrayList<>();
+        invalidValues = new ArrayList<>();
+        readFile(validValues, validFileName);
+        readFile(invalidValues,invalidFileName);
     }
 
     @AfterClass
@@ -52,9 +46,23 @@ public class DecisionTableTest {
         appController = new AppController();
     }
 
+    private static void readFile(ArrayList<String[]> values, String fileName){
+        System.out.println("Reading test validValues from file " + fileName + "\n");
+        try {
+            inputStream = new Scanner(new File(fileName));
+            while (inputStream.hasNextLine()) {
+                values.add(inputStream.nextLine().split(","));
+            }
+            System.out.println(values.size() + "");
+        } catch (FileNotFoundException e) {
+            System.out.println("Error opening the file " + fileName);
+            System.exit(0);
+        }
+    }
+
     @Test
     public void testAddOneRequestsValidValues() {
-        for (String[] requests : values) {
+        for (String[] requests : validValues) {
             int quantity = Integer.valueOf(requests[0]);
             boolean hasHighQualityPaper = Boolean.parseBoolean(requests[1]);
             boolean hasDesignEffect = Boolean.parseBoolean(requests[2]);
@@ -80,10 +88,15 @@ public class DecisionTableTest {
     }
 
     @Test(expected = IllegalArgumentException.class)
-    @Parameters(method = "getParamsForTestAddOneRequestInvalidValue")
-    public void testAddOneRequestInvalidValues(int paperQty, boolean hasHighQualityPaper, boolean hasDesignEffect) {
-        appController.addRequest(new Request(paperQty, hasHighQualityPaper, hasDesignEffect));
-        appController.submitRequest();
+    public void testAddOneRequestInvalidValues() {
+        for (String[] requests : invalidValues) {
+            int paperQty = Integer.valueOf(requests[0]);
+            boolean hasHighQualityPaper = Boolean.parseBoolean(requests[1]);
+            boolean hasDesignEffect = Boolean.parseBoolean(requests[2]);
+            AppController controller = new AppController();
+            controller.addRequest(new Request(paperQty, hasHighQualityPaper, hasDesignEffect));
+            controller.submitRequest();
+        }
     }
 
 //    public Object[] getParamsForTestAddOneRequestsValidValues() {
@@ -102,22 +115,12 @@ public class DecisionTableTest {
 //                new Object[]{50, false, true, 10.0}, new Object[]{51, false, true, 10.2}, new Object[]{99, false, true, 19.8}, new Object[]{100, false, true, 20.0},
 //        };
 //    }
-
-
+    
     public Object[] getParamsForTestAddMultipleRequestsValidValues() {
         return new Object[]{
                 new Object[]{1, 1, true, false, 1.1},
                 new Object[]{4, 4, true, false, 12.8},
                 new Object[]{10, 5, true, false, 10.0}
-        };
-    }
-
-    public Object[] getParamsForTestAddOneRequestInvalidValue() {
-        return new Object[] {
-                new Object[] {0,true,false}, new Object[] {101,true,false},
-                new Object[] {0,true,true}, new Object[] {101,true,true},
-                new Object[] {0,false,false}, new Object[] {101,false,false},
-                new Object[] {0,false,true}, new Object[] {101,false,true}
         };
     }
 }
