@@ -20,6 +20,7 @@ public class RequestTest {
         order = new Order();
     }
 
+
     @Test
     @Parameters(method = "getValidParamsForTestPhotoOption")
     public void testPhotoOption(int quantity, boolean hasHighQualityPaper, boolean hasDesignEffect) {
