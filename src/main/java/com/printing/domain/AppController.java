@@ -32,9 +32,4 @@ public class AppController {
     public double getTotalCharge() {
         return order.getTotalCharge();
     }
-
-    public void sendToPrinter(){
-        PhotoPrinter photoPrinter = new PhotoPrinter();
-        photoPrinter.queueRequest();
-    }
 }
