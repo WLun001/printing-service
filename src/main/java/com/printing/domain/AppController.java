@@ -32,4 +32,8 @@ public class AppController {
     public double getTotalCharge() {
         return order.getTotalCharge();
     }
+
+    public void sendToPrinter() {
+        order.sendToPrinter();
+    }
 }

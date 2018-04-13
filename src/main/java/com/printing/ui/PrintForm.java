@@ -33,8 +33,8 @@ public class PrintForm {
                 designEffectCheckBox.setSelected(false);
             } else {
                 controller.submitRequest();
-                controller.sendToPrinter();
                 price.setText("Total Charge: RM " + String.valueOf(controller.getTotalCharge()));
+                controller.sendToPrinter();
             }
         });
     }
