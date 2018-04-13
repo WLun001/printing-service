@@ -12,6 +12,7 @@ public class Order {
     public Order() {
         this.id = UUID.randomUUID().toString();
         requestList = new RequestList();
+        printer = new PhotoPrinter();
     }
 
     public void addRequest(Request request) {
@@ -32,7 +33,7 @@ public class Order {
 
     public void sendToPrinter() {
         for(Request request: requestList.getRequestList()) {
-            printer.queueRequest();
+            printer.queueRequest(request);
         }
     }
 }

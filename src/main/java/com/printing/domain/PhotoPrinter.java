@@ -2,6 +2,6 @@ package com.printing.domain;
 
 public class PhotoPrinter {
 
-    public void queueRequest() {
+    public void queueRequest(Request request) {
     }
 }

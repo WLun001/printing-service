@@ -5,10 +5,8 @@ import java.util.ArrayList;
 public class Computation {
     private double totalCharge;
     private int requestsQuantity;
-    private PhotoPrinter photoPrinter;
 
     public Computation() {
-        photoPrinter = new PhotoPrinter();
     }
 
     public double getTotalCharge() {
@@ -55,7 +53,6 @@ public class Computation {
         int quantity = 0;
         for(Request request: requests) {
             quantity += request.getQuantity();
-            photoPrinter.queueRequest();
         }
         return quantity;
     }
