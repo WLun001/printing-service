@@ -1,6 +1,5 @@
 package com.printing;
 
-import com.printing.domain.PhotoPrinter;
 import org.junit.runner.RunWith;
 import org.junit.runners.Suite;
 
