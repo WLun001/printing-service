@@ -5,8 +5,8 @@
 //
 //@RunWith(value = Suite.class)
 //@Suite.SuiteClasses(value = {
-//        AppControllerTest.class,
-//        AppControllerParamsTest.class
+//        OrderTest.class, RequestTest.class,
+//        RequestListTest.class
 //})
-//public class TestSuiteAppController {
+//public class TestSuiteClasses {
 //}

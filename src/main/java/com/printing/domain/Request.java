@@ -12,6 +12,7 @@ public class Request {
     public Request(int quantity, boolean highQualityPaper, boolean designEffect) {
         if(quantity <= 0)
             throw new IllegalArgumentException("Quantity cannot be zero");
+
         else {
             this.id = UUID.randomUUID().toString();
             this.quantity = quantity;
