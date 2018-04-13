@@ -2,6 +2,7 @@ package com.printing;
 
 import com.printing.domain.Order;
 import com.printing.domain.Request;
+import junit.framework.TestSuite;
 import junitparams.JUnitParamsRunner;
 import junitparams.Parameters;
 import org.junit.Before;
@@ -11,7 +12,7 @@ import org.junit.runner.RunWith;
 import static junit.framework.TestCase.assertEquals;
 
 @RunWith(JUnitParamsRunner.class)
-public class RequestTest {
+public class RequestTest extends TestSuite {
 
     private Order order;
 

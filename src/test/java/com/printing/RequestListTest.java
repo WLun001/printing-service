@@ -2,6 +2,7 @@ package com.printing;
 
 import com.printing.domain.Request;
 import com.printing.domain.RequestList;
+import junit.framework.TestSuite;
 import junitparams.JUnitParamsRunner;
 import org.junit.Before;
 import org.junit.Test;
@@ -12,7 +13,7 @@ import static junit.framework.TestCase.assertSame;
 import static org.mockito.Mockito.mock;
 
 @RunWith(JUnitParamsRunner.class)
-public class RequestListTest {
+public class RequestListTest extends TestSuite {
 
     private RequestList requestList;
 

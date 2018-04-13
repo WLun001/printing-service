@@ -2,6 +2,7 @@ package com.printing;
 
 import com.printing.domain.AppController;
 import com.printing.domain.Request;
+import junit.framework.TestSuite;
 import junitparams.JUnitParamsRunner;
 import junitparams.Parameters;
 import org.junit.AfterClass;
@@ -18,7 +19,7 @@ import java.util.Scanner;
 import static junit.framework.TestCase.assertEquals;
 
 @RunWith(JUnitParamsRunner.class)
-public class DecisionTableTest {
+public class DecisionTableTest extends TestSuite{
 
     private static ArrayList<String[]> validValues;
     private static ArrayList<String[]> invalidValues;

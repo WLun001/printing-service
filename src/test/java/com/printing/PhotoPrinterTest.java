@@ -1,4 +1,6 @@
 package com.printing;
 
-public class PhotoPrinterTest {
+import junit.framework.TestSuite;
+
+public class PhotoPrinterTest extends TestSuite {
 }

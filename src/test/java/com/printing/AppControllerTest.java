@@ -1,9 +1,12 @@
 package com.printing;
 
 import com.printing.domain.*;
+import junit.framework.TestCase;
+import junit.framework.TestSuite;
 import org.junit.Before;
 import org.junit.Test;
 import org.junit.runner.RunWith;
+import org.junit.runners.model.TestClass;
 import org.mockito.InOrder;
 import org.mockito.InjectMocks;
 import org.mockito.Mock;
@@ -17,7 +20,7 @@ import static org.mockito.Mockito.times;
 import static org.mockito.Mockito.verify;
 
 @RunWith(MockitoJUnitRunner.class)
-public class AppControllerTest {
+public class AppControllerTest extends TestSuite {
 
     private Request request;
 

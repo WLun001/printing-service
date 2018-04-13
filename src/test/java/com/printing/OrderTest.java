@@ -3,6 +3,7 @@ package com.printing;
  import com.printing.domain.Order;
  import com.printing.domain.Request;
  import com.printing.domain.RequestList;
+ import junit.framework.TestSuite;
  import org.junit.Before;
  import org.junit.Test;
 import org.junit.runner.RunWith;
@@ -15,7 +16,7 @@ import org.junit.runner.RunWith;
  import static org.mockito.Mockito.verify;
 
 @RunWith(MockitoJUnitRunner.class)
-public class OrderTest {
+public class OrderTest extends TestSuite {
 
     private Request request;
 

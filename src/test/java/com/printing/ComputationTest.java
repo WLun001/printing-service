@@ -2,6 +2,7 @@ package com.printing;
 
 import com.printing.domain.Computation;
 import com.printing.domain.Request;
+import junit.framework.TestSuite;
 import junitparams.JUnitParamsRunner;
 import junitparams.Parameters;
 import org.junit.Before;
@@ -13,7 +14,7 @@ import java.util.ArrayList;
 import static junit.framework.TestCase.assertEquals;
 
 @RunWith(JUnitParamsRunner.class)
-public class ComputationTest {
+public class ComputationTest extends TestSuite{
 
     private Computation charge;
 

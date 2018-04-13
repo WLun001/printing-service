@@ -3,6 +3,8 @@ package com.printing;
 import com.printing.domain.AppController;
 import com.printing.domain.Order;
 import com.printing.domain.Request;
+import junit.framework.TestCase;
+import junit.framework.TestSuite;
 import junitparams.JUnitParamsRunner;
 import junitparams.Parameters;
 import org.junit.Before;
@@ -10,7 +12,7 @@ import org.junit.Test;
 import org.junit.runner.RunWith;
 
 @RunWith(JUnitParamsRunner.class)
-public class AppControllerParamsTest {
+public class AppControllerParamsTest extends TestSuite {
 
     private AppController ac;
 
