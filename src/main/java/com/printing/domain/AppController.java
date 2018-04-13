@@ -33,6 +33,10 @@ public class AppController {
         return order.getTotalCharge();
     }
 
+    public void setPrinter(IPrintable printer) {
+        order.setPrinter(printer);
+    }
+
     public void sendToPrinter() {
         order.sendToPrinter();
     }

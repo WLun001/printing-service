@@ -1,7 +1,9 @@
 package com.printing.domain;
 
-public class PhotoPrinter {
+public class PhotoPrinter implements IPrintable {
 
-    public void queueRequest(Request request) {
+    @Override
+    public void queueRequest() {
+
     }
 }

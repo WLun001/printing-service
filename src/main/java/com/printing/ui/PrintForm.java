@@ -1,8 +1,6 @@
 package com.printing.ui;
 
-import com.printing.domain.AppController;
-import com.printing.domain.Order;
-import com.printing.domain.Request;
+import com.printing.domain.*;
 
 import javax.swing.*;
 import java.awt.event.ActionEvent;
@@ -19,6 +17,7 @@ public class PrintForm {
     private JButton computeRequestButton;
     private JButton addRequestButton;
     private AppController controller = new AppController();
+    private IPrintable printer = new PhotoPrinter();
 
     public PrintForm() {
         printButton.addActionListener(e -> {
@@ -28,8 +27,11 @@ public class PrintForm {
                             "Do you want start printing?",
                             "Attention", JOptionPane.YES_NO_OPTION);
 
-            if(dialog == 0)
+            if(dialog == 0) {
+                controller.setPrinter(printer);
                 controller.sendToPrinter();
+            }
+
         });
         addRequestButton.addActionListener(new ActionListener() {
             @Override
