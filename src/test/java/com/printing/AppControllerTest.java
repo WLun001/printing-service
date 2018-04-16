@@ -14,7 +14,6 @@ import org.mockito.runners.MockitoJUnitRunner;
 import java.util.List;
 
 import static junit.framework.TestCase.assertEquals;
-import static junit.framework.TestCase.assertSame;
 import static org.mockito.Mockito.times;
 import static org.mockito.Mockito.verify;
 
@@ -82,7 +81,7 @@ public class AppControllerTest extends TestSuite {
     }
 
     @Test
-    public void testGetNumberOfPaper(){
+    public void testGetNumberOfPaper() {
         AppController controller = new AppController();
         controller.addRequest(new Request(10, true, true));
         controller.addRequest(new Request(15, true, true));
@@ -114,7 +113,7 @@ public class AppControllerTest extends TestSuite {
     }
 
     @Test
-    public void testSetPrinter(){
+    public void testSetPrinter() {
         IPrintable printer = new PhotoPrinter();
         ac.setPrinter(printer);
         verify(order, times(1)).setPrinter(printer);
