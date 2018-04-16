@@ -2,11 +2,14 @@ package com.printing.domain;
 
 import java.util.ArrayList;
 
+/**
+ * Printer class that handled by third party
+ */
 public class PhotoPrinter implements IPrintable {
 
     private ArrayList<Request> requests;
 
-    public PhotoPrinter(){
+    public PhotoPrinter() {
         requests = new ArrayList<>();
     }
 
