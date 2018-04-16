@@ -42,8 +42,13 @@ public class AppControllerIntegrationTest {
     }
 
     @Test
-    public void testComputeCharge(){
-
+    @Parameters(method = "paramsComputeChargeValid")
+    public void testComputeCharge(int requestQty, int paperQty, boolean hasHighQualityPaper, boolean hasDesignEffect, double expectedPrice){
+        for (int i = 0; i < requestQty; i ++) {
+            controller.addRequest(new Request(paperQty, hasHighQualityPaper, hasDesignEffect));
+        }
+        controller.submitRequest();
+        assertEquals(expectedPrice, controller.getTotalCharge(), 0);
     }
 
 
@@ -70,5 +75,13 @@ public class AppControllerIntegrationTest {
                 new Object[]{9,0,false,true},
                 new Object[]{11,101,false,true},
         };
+    }
+
+    private Object[] paramsComputeChargeValid() {
+        return new Object[]{
+                new Object[]{1,1, true, false, 1.1},
+                new Object[]{4,4, true, false, 12.8},
+                new Object[]{10,5, true, false, 10.0}
+              };
     }
 }
