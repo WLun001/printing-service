@@ -18,15 +18,17 @@ public class PrintForm {
 
     public PrintForm() {
         printButton.addActionListener(e -> {
-            int dialog = JOptionPane
-                    .showConfirmDialog(null,
-                            "Do you want start printing?",
-                            "Attention", JOptionPane.YES_NO_OPTION);
-            if(dialog == 0) {
-                controller.setPrinter(printer);
-                controller.sendToPrinter();
-                JOptionPane.showMessageDialog(null,"Start printing...");
-            }
+            if (controller.getNumberOfRequest() > 0) {
+                int dialog = JOptionPane
+                        .showConfirmDialog(null,
+                                "Do you want start printing?",
+                                "Attention", JOptionPane.YES_NO_OPTION);
+                if (dialog == 0) {
+                    controller.setPrinter(printer);
+                    controller.sendToPrinter();
+                    JOptionPane.showMessageDialog(null, "Start printing...");
+                }
+            } else JOptionPane.showMessageDialog(null, "No requests to print");
 
         });
         addRequestButton.addActionListener(e -> {
@@ -35,7 +37,8 @@ public class PrintForm {
                 boolean hasHighQualityPaper = highQualityPaperCheckBox.isSelected();
                 boolean hasDesignEffect = designEffectCheckBox.isSelected();
                 addRequest(quantity, hasHighQualityPaper, hasDesignEffect);
-                price.setText("Current request : " + controller.getNumberOfRequest());
+                price.setText("Current request : " + controller.getNumberOfRequest()
+                + "\nCurrent Paper : " + controller.getNumberOfPaper());
             } catch (NumberFormatException error){
                 JOptionPane.showMessageDialog(null, "Quantity must be an integer");
 
