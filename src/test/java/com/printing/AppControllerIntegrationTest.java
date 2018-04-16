@@ -22,6 +22,9 @@ public class AppControllerIntegrationTest {
         controller = new AppController();
     }
 
+    /**
+     * Test the method addRequest can be executed appropriately
+     */
     @Test
     @Parameters(method = "paramsAddRequestValid")
     public void testAddRequestValid(int requestQty, int paperQty, boolean hasHighQualityPaper, boolean hasDesignEffect) {
@@ -34,6 +37,9 @@ public class AppControllerIntegrationTest {
         assertEquals(hasDesignEffect, controller.getRequestList().get(0).hasDesignEffect());
     }
 
+    /**
+     * Test the method addRequest can be executed appropriately with invalid values
+     */
     @Test(expected = IllegalArgumentException.class)
     @Parameters(method = "paramsAddRequestInvalid")
     public void testAddRequestInvalid(int requestQty, int paperQty, boolean hasHighQualityPaper, boolean hasDesignEffect) {
@@ -42,6 +48,9 @@ public class AppControllerIntegrationTest {
         }
     }
 
+    /**
+     * Test the method computeCharge can be executed appropriately
+     */
     @Test
     @Parameters(method = "paramsComputeChargeValid")
     public void testComputeCharge(int requestQty, int paperQty, boolean hasHighQualityPaper, boolean hasDesignEffect, double expectedPrice) {
@@ -53,6 +62,9 @@ public class AppControllerIntegrationTest {
     }
 
 
+    /**
+     * Test the method queueRequest can be executed appropriately
+     */
     @Test
     @Parameters(method = "paramsQueueRequest")
     public void testQueueRequest(int requestQty, int paperQty, boolean hasHighQualityPaper, boolean hasDesignEffect) {
@@ -64,10 +76,9 @@ public class AppControllerIntegrationTest {
         controller.setPrinter(printer);
         controller.sendToPrinter();
         assertEquals(controller.getNumberOfRequest(), ((PhotoPrinter) printer).getRequests().size());
-
     }
 
-    private Object[] paramsAddRequestValid() {
+    public Object[] paramsAddRequestValid() {
         return new Object[]{
                 new Object[]{1, 1, true, true},
                 new Object[]{5, 5, true, true},
@@ -79,7 +90,7 @@ public class AppControllerIntegrationTest {
         };
     }
 
-    private Object[] paramsAddRequestInvalid() {
+    public Object[] paramsAddRequestInvalid() {
         return new Object[]{
                 new Object[]{1, -1, true, true},
                 new Object[]{9, 0, false, true},
@@ -87,7 +98,7 @@ public class AppControllerIntegrationTest {
         };
     }
 
-    private Object[] paramsComputeChargeValid() {
+    public Object[] paramsComputeChargeValid() {
         return new Object[]{
                 new Object[]{1, 1, true, false, 1.1},
                 new Object[]{4, 4, true, false, 12.8},
@@ -95,7 +106,7 @@ public class AppControllerIntegrationTest {
         };
     }
 
-    private Object[] paramsQueueRequest() {
+    public Object[] paramsQueueRequest() {
         return new Object[]{
                 new Object[]{1, 1, true, false, 1},
                 new Object[]{4, 4, true, false, 16},

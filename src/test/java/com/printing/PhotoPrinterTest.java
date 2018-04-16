@@ -14,7 +14,7 @@ import static org.mockito.Mockito.*;
 public class PhotoPrinterTest extends TestSuite {
 
     /**
-     * Test the method queueRequest can be executed appropriately
+     * Test the method queueRequest had been run once
      */
     @Test
     public void testQueueRequest() {
@@ -27,7 +27,6 @@ public class PhotoPrinterTest extends TestSuite {
         controller.setPrinter(printerMock);
         controller.sendToPrinter();
         verify(printerMock, times(2)).queueRequest(request);
-
     }
 
 }
