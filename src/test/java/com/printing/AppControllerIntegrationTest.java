@@ -55,7 +55,7 @@ public class AppControllerIntegrationTest {
 
     @Test
     @Parameters(method = "paramsQueueRequest")
-    public void testQueueRequest(int requestQty, int paperQty, boolean hasHighQualityPaper, boolean hasDesignEffect, int expectedRequest) {
+    public void testQueueRequest(int requestQty, int paperQty, boolean hasHighQualityPaper, boolean hasDesignEffect) {
         IPrintable printer = new PhotoPrinter();
         for (int i = 0; i < requestQty; i++) {
             controller.addRequest(new Request(paperQty, hasHighQualityPaper, hasDesignEffect));
@@ -63,7 +63,7 @@ public class AppControllerIntegrationTest {
         controller.submitRequest();
         controller.setPrinter(printer);
         controller.sendToPrinter();
-        assertEquals(controller.getNumberOfRequest(), ((PhotoPrinter)printer).getRequests().size());
+        assertEquals(controller.getNumberOfRequest(), ((PhotoPrinter) printer).getRequests().size());
 
     }
 

@@ -21,6 +21,9 @@ public class RequestListTest extends TestSuite {
         requestList = new RequestList();
     }
 
+    /**
+     * Test the method addRequest can be executed appropriately
+     */
     @Test
     public void testAddRequest() {
         Request requestMock = mock(Request.class);
@@ -28,6 +31,9 @@ public class RequestListTest extends TestSuite {
         assertSame(requestList.getRequestList().get(0), requestMock);
     }
 
+    /**
+     * Test the method getRequest can be executed appropriately
+     */
     @Test
     public void testGetRequestList() {
         Request request = new Request(10, true, true);
@@ -35,6 +41,9 @@ public class RequestListTest extends TestSuite {
         assertSame(request, requestList.getRequestList().get(0));
     }
 
+    /**
+     * Test the method getNumberOfRequest can be executed appropriately
+     */
     @Test
     public void testGetNumberOfRequest() {
         requestList.addRequest(new Request(10, true, true));

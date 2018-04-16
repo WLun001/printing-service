@@ -61,6 +61,9 @@ public class DecisionTableTest extends TestSuite {
         appController = new AppController();
     }
 
+    /**
+     * Test the method addRequest can be executed appropriately with one request
+     */
     @Test
     public void testAddOneRequestsValidValues() {
         for (String[] requests : validValues) {
@@ -72,12 +75,13 @@ public class DecisionTableTest extends TestSuite {
             AppController controller = new AppController();
             controller.addRequest(new Request(quantity, hasHighQualityPaper, hasDesignEffect));
             controller.submitRequest();
-//            System.out.println(controller.getRequestList().get(0).hasDesignEffect());
-            double result = controller.getTotalCharge();
-            assertEquals(expectedTotalPrice, result, 0);
+            assertEquals(expectedTotalPrice, controller.getTotalCharge(), 0);
         }
     }
 
+    /**
+     * Test the method addRequest can be executed appropriately with multiples requests
+     */
     @Test
     @Parameters(method = "getParamsForTestAddMultipleRequestsValidValues")
     public void testAddMultipleRequestsValidValues(int requestQty, int paperQty, boolean hasHighQualityPaper, boolean hasDesignEffect, double expectedTotalPrice) {
@@ -88,6 +92,9 @@ public class DecisionTableTest extends TestSuite {
         assertEquals(expectedTotalPrice, result, 0);
     }
 
+    /**
+     * Test the method addRequest invalid values
+     */
     @Test(expected = IllegalArgumentException.class)
     public void testAddOneRequestInvalidValues() {
         for (String[] requests : invalidValues) {

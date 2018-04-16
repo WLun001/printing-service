@@ -35,6 +35,4 @@ public class AppControllerParamsTest extends TestSuite {
                 new Object[]{0, 0, 0}
         };
     }
-
-
 }

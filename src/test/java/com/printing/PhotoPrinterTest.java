@@ -13,6 +13,9 @@ import static org.mockito.Mockito.*;
 @RunWith(JUnitParamsRunner.class)
 public class PhotoPrinterTest extends TestSuite {
 
+    /**
+     * Test the method queueRequest can be executed appropriately
+     */
     @Test
     public void testQueueRequest() {
         AppController controller = new AppController();

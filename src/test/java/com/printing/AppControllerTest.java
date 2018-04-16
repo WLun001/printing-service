@@ -22,11 +22,9 @@ public class AppControllerTest extends TestSuite {
 
     private Request request;
     @InjectMocks
-    private
-    AppController ac = new AppController();
+    private AppController ac;
     @Mock
-    private
-    Order order;
+    private Order order;
 
     @Before
     public void setup() {
@@ -112,6 +110,9 @@ public class AppControllerTest extends TestSuite {
         verify(order, times(1)).getTotalCharge();
     }
 
+    /**
+     * Test the method inside setPrinter had been run one time
+     */
     @Test
     public void testSetPrinter() {
         IPrintable printer = new PhotoPrinter();
