@@ -119,5 +119,4 @@ public class AppControllerTest extends TestSuite {
         ac.setPrinter(printer);
         verify(order, times(1)).setPrinter(printer);
     }
-
 }

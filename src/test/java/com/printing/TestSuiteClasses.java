@@ -9,5 +9,4 @@ import org.junit.runners.Suite;
         RequestListTest.class
 })
 public class TestSuiteClasses {
-
 }

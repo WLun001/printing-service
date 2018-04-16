@@ -19,6 +19,9 @@ public class AppControllerParamsTest extends TestSuite {
         ac = new AppController();
     }
 
+    /**
+     * Test the method addOrder can be executed appropriately with invalid values
+     */
     @Test(expected = IllegalArgumentException.class)
     @Parameters(method = "getParamsForAddOrderInvalidValues")
     public void testAddOrderInvalidValues(int quantity, boolean hasHighQualityPaper, boolean hasDesignEffect) {

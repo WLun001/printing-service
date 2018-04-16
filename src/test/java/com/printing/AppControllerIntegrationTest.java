@@ -108,9 +108,9 @@ public class AppControllerIntegrationTest {
 
     public Object[] paramsQueueRequest() {
         return new Object[]{
-                new Object[]{1, 1, true, false, 1},
-                new Object[]{4, 4, true, false, 16},
-                new Object[]{10, 5, true, false, 50}
+                new Object[]{1, 1, true, false},
+                new Object[]{4, 4, true, false},
+                new Object[]{10, 5, true, false}
         };
     }
 }
