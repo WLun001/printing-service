@@ -1,9 +1,7 @@
 package com.printing;
 
 import com.printing.domain.AppController;
-import com.printing.domain.Order;
 import com.printing.domain.Request;
-import junit.framework.TestCase;
 import junit.framework.TestSuite;
 import junitparams.JUnitParamsRunner;
 import junitparams.Parameters;

@@ -1,12 +1,10 @@
 package com.printing;
 
 import com.printing.domain.*;
-import junit.framework.TestCase;
 import junit.framework.TestSuite;
 import org.junit.Before;
 import org.junit.Test;
 import org.junit.runner.RunWith;
-import org.junit.runners.model.TestClass;
 import org.mockito.InOrder;
 import org.mockito.InjectMocks;
 import org.mockito.Mock;
