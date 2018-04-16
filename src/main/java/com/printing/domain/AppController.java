@@ -24,6 +24,14 @@ public class AppController {
         return order.getRequestList().size();
     }
 
+    public int getNumberOfPaper(){
+        int quantity = 0;
+        for(Request request: order.getRequestList()) {
+            quantity += request.getQuantity();
+        }
+        return quantity;
+    }
+
     public void submitRequest() {
         computation.receiveRequests(order.getRequestList());
         order.setTotalCharge(computation.getTotalCharge());
