@@ -23,7 +23,7 @@ public class PhotoPrinterTest extends TestSuite {
         controller.submitRequest();
         controller.setPrinter(printerMock);
         controller.sendToPrinter();
-        verify(printerMock, times(2)).queueRequest();
+        verify(printerMock, times(2)).queueRequest(request);
 
     }
 

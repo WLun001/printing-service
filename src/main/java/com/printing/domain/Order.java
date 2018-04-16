@@ -38,7 +38,7 @@ public class Order {
 
     public void sendToPrinter() {
         for (Request request : requestList.getRequestList()) {
-            printer.queueRequest();
+            printer.queueRequest(request);
         }
     }
 }
