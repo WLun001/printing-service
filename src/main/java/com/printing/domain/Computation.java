@@ -51,7 +51,7 @@ public class Computation {
 
     private int getTotalQuantity(ArrayList<Request> requests) {
         int quantity = 0;
-        for(Request request: requests) {
+        for (Request request : requests) {
             quantity += request.getQuantity();
         }
         return quantity;
@@ -59,8 +59,8 @@ public class Computation {
 
     private double getOptionCharge(ArrayList<Request> requests) {
         double optionCharge = 0.0;
-        for(Request request: requests) {
-            for(int i = 0; i < request.getQuantity(); i++)
+        for (Request request : requests) {
+            for (int i = 0; i < request.getQuantity(); i++)
                 optionCharge += calculateOptionCharge(request.hasHighQualityPaper(), request.hasDesignEffect());
         }
         return optionCharge;

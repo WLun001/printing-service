@@ -1,6 +1,8 @@
 package com.printing;
 
-import com.printing.domain.*;
+import com.printing.domain.AppController;
+import com.printing.domain.Order;
+import com.printing.domain.Request;
 import junit.framework.TestSuite;
 import org.junit.Before;
 import org.junit.Test;
@@ -21,18 +23,17 @@ import static org.mockito.Mockito.verify;
 public class AppControllerTest extends TestSuite {
 
     private Request request;
-
-    @Before
-    public void setup() {
-        request = new Request(10, true, false);
-    }
-
     @InjectMocks
     private
     AppController ac = new AppController();
     @Mock
     private
     Order order;
+
+    @Before
+    public void setup() {
+        request = new Request(10, true, false);
+    }
 
     /**
      * Test the method inside addRequest had been run twice

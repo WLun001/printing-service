@@ -19,7 +19,7 @@ import java.util.Scanner;
 import static junit.framework.TestCase.assertEquals;
 
 @RunWith(JUnitParamsRunner.class)
-public class DecisionTableTest extends TestSuite{
+public class DecisionTableTest extends TestSuite {
 
     private static ArrayList<String[]> validValues;
     private static ArrayList<String[]> invalidValues;
@@ -33,7 +33,7 @@ public class DecisionTableTest extends TestSuite{
         validValues = new ArrayList<>();
         invalidValues = new ArrayList<>();
         readFile(validValues, validFileName);
-        readFile(invalidValues,invalidFileName);
+        readFile(invalidValues, invalidFileName);
     }
 
     @AfterClass
@@ -42,12 +42,7 @@ public class DecisionTableTest extends TestSuite{
         inputStream.close();
     }
 
-    @Before
-    public void setup() {
-        appController = new AppController();
-    }
-
-    private static void readFile(ArrayList<String[]> values, String fileName){
+    private static void readFile(ArrayList<String[]> values, String fileName) {
         System.out.println("Reading test validValues from file " + fileName + "\n");
         try {
             inputStream = new Scanner(new File(fileName));
@@ -59,6 +54,11 @@ public class DecisionTableTest extends TestSuite{
             System.out.println("Error opening the file " + fileName);
             System.exit(0);
         }
+    }
+
+    @Before
+    public void setup() {
+        appController = new AppController();
     }
 
     @Test

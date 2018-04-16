@@ -14,7 +14,7 @@ import java.util.ArrayList;
 import static junit.framework.TestCase.assertEquals;
 
 @RunWith(JUnitParamsRunner.class)
-public class ComputationTest extends TestSuite{
+public class ComputationTest extends TestSuite {
 
     private Computation charge;
 
@@ -30,7 +30,7 @@ public class ComputationTest extends TestSuite{
     @Parameters(method = "getParamsForTestReceiveOrder")
     public void testReceiveRequestsValidValues(int quantity) {
         ArrayList<Request> requests = new ArrayList<>();
-        for(int i = 0; i < quantity; i++) {
+        for (int i = 0; i < quantity; i++) {
             requests.add(new Request(1, true, true));
             charge.receiveRequests(requests);
         }
@@ -46,11 +46,10 @@ public class ComputationTest extends TestSuite{
     }
 
     public Object[] getParamsForTestReceiveOrder() {
-        return new Object[] {
+        return new Object[]{
                 new Object[]{0},
                 new Object[]{2},
                 new Object[]{5}
         };
     }
-
 }

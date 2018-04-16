@@ -10,7 +10,7 @@ public class Request {
     private int quantity;
 
     public Request(int quantity, boolean highQualityPaper, boolean designEffect) {
-        if(quantity <= 0 || quantity > 100)
+        if (quantity <= 0 || quantity > 100)
             throw new IllegalArgumentException("Quantity must be within 1 - 100");
 
         else {

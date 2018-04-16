@@ -38,17 +38,17 @@ public class RequestTest extends TestSuite {
     }
 
     public Object[] getValidParamsForTestPhotoOption() {
-        return new Object[] {
-                new Object[] {1, true, true},
-                new Object[] {10, false, true},
-                new Object[] {100, true, false}
+        return new Object[]{
+                new Object[]{1, true, true},
+                new Object[]{10, false, true},
+                new Object[]{100, true, false}
         };
     }
 
     public Object[] getInvalidParamsForTestPhotoOption() {
-        return new Object[] {
-                new Object[] {0, true, true},
-                new Object[] {-1, false, true}
+        return new Object[]{
+                new Object[]{0, true, true},
+                new Object[]{-1, false, true}
         };
     }
 }

@@ -1,7 +1,6 @@
 package com.printing.domain;
 
 import java.util.ArrayList;
-import java.util.List;
 
 public class AppController {
     private Order order;
@@ -24,9 +23,9 @@ public class AppController {
         return order.getRequestList().size();
     }
 
-    public int getNumberOfPaper(){
+    public int getNumberOfPaper() {
         int quantity = 0;
-        for(Request request: order.getRequestList()) {
+        for (Request request : order.getRequestList()) {
             quantity += request.getQuantity();
         }
         return quantity;

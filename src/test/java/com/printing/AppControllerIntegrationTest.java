@@ -1,7 +1,6 @@
 package com.printing;
 
 import com.printing.domain.AppController;
-import com.printing.domain.Computation;
 import com.printing.domain.Request;
 import junitparams.JUnitParamsRunner;
 import junitparams.Parameters;
@@ -17,14 +16,14 @@ public class AppControllerIntegrationTest {
     private AppController controller;
 
     @Before
-    public void setup(){
+    public void setup() {
         controller = new AppController();
     }
 
     @Test
     @Parameters(method = "paramsAddRequestValid")
-    public void testAddRequestValid(int requestQty, int paperQty, boolean hasHighQualityPaper, boolean hasDesignEffect){
-        for (int i = 0; i < requestQty; i ++) {
+    public void testAddRequestValid(int requestQty, int paperQty, boolean hasHighQualityPaper, boolean hasDesignEffect) {
+        for (int i = 0; i < requestQty; i++) {
             controller.addRequest(new Request(paperQty, hasHighQualityPaper, hasDesignEffect));
         }
         assertEquals(requestQty, controller.getNumberOfRequest());
@@ -35,16 +34,16 @@ public class AppControllerIntegrationTest {
 
     @Test(expected = IllegalArgumentException.class)
     @Parameters(method = "paramsAddRequestInvalid")
-    public void testAddRequestInvalid(int requestQty, int paperQty, boolean hasHighQualityPaper, boolean hasDesignEffect){
-        for (int i = 0; i < requestQty; i ++) {
+    public void testAddRequestInvalid(int requestQty, int paperQty, boolean hasHighQualityPaper, boolean hasDesignEffect) {
+        for (int i = 0; i < requestQty; i++) {
             controller.addRequest(new Request(paperQty, hasHighQualityPaper, hasDesignEffect));
         }
     }
 
     @Test
     @Parameters(method = "paramsComputeChargeValid")
-    public void testComputeCharge(int requestQty, int paperQty, boolean hasHighQualityPaper, boolean hasDesignEffect, double expectedPrice){
-        for (int i = 0; i < requestQty; i ++) {
+    public void testComputeCharge(int requestQty, int paperQty, boolean hasHighQualityPaper, boolean hasDesignEffect, double expectedPrice) {
+        for (int i = 0; i < requestQty; i++) {
             controller.addRequest(new Request(paperQty, hasHighQualityPaper, hasDesignEffect));
         }
         controller.submitRequest();
@@ -53,35 +52,34 @@ public class AppControllerIntegrationTest {
 
 
     @Test
-    public void testPhotoPrinting(){
+    public void testPhotoPrinting() {
 
     }
 
-    private Object[] paramsAddRequestValid(){
+    private Object[] paramsAddRequestValid() {
         return new Object[]{
-                new Object[]{1,1,true,true},
-                new Object[]{5,5,true,true},
-                new Object[]{9,12,false,true},
-                new Object[]{11,55,false,true},
-                new Object[]{13,77,false,false},
-                new Object[]{15,99,false,true}
+                new Object[]{1, 1, true, true},
+                new Object[]{5, 5, true, true},
+                new Object[]{9, 12, false, true},
+                new Object[]{11, 55, false, true},
+                new Object[]{13, 77, false, false},
+                new Object[]{15, 99, false, true}
 
         };
     }
 
-    private Object[] paramsAddRequestInvalid(){
+    private Object[] paramsAddRequestInvalid() {
         return new Object[]{
-                new Object[]{1,-1,true,true},
-                new Object[]{9,0,false,true},
-                new Object[]{11,101,false,true},
+                new Object[]{1, -1, true, true},
+                new Object[]{9, 0, false, true},
+                new Object[]{11, 101, false, true},
         };
     }
 
     private Object[] paramsComputeChargeValid() {
         return new Object[]{
-                new Object[]{1,1, true, false, 1.1},
-                new Object[]{4,4, true, false, 12.8},
-                new Object[]{10,5, true, false, 10.0}
-              };
-    }
-}
+                new Object[]{1, 1, true, false, 1.1},
+                new Object[]{4, 4, true, false, 12.8},
+                new Object[]{10, 5, true, false, 10.0}
+        };
+    }}

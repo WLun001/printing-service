@@ -1,6 +1,9 @@
 package com.printing.ui;
 
-import com.printing.domain.*;
+import com.printing.domain.AppController;
+import com.printing.domain.IPrintable;
+import com.printing.domain.PhotoPrinter;
+import com.printing.domain.Request;
 
 import javax.swing.*;
 
@@ -38,11 +41,11 @@ public class PrintForm {
                 boolean hasDesignEffect = designEffectCheckBox.isSelected();
                 addRequest(quantity, hasHighQualityPaper, hasDesignEffect);
                 price.setText("Current request : " + controller.getNumberOfRequest()
-                + "\nCurrent Paper : " + controller.getNumberOfPaper());
-            } catch (NumberFormatException error){
+                        + "\nCurrent Paper : " + controller.getNumberOfPaper());
+            } catch (NumberFormatException error) {
                 JOptionPane.showMessageDialog(null, "Quantity must be an integer");
 
-            }catch (IllegalArgumentException error){
+            } catch (IllegalArgumentException error) {
                 JOptionPane.showMessageDialog(null, error.getMessage());
             } finally {
                 clearInput();
@@ -51,7 +54,7 @@ public class PrintForm {
 
         computeRequestButton.addActionListener(e -> {
             if (controller.getNumberOfRequest() == 0)
-                JOptionPane.showMessageDialog(null,"No request to compute");
+                JOptionPane.showMessageDialog(null, "No request to compute");
             else {
                 controller.submitRequest();
                 price.setText("Total Charge: RM " + String.valueOf(controller.getTotalCharge()));
@@ -60,18 +63,6 @@ public class PrintForm {
         });
     }
 
-    private void addRequest(int quantity, boolean hasHighQuality, boolean hasDesignEffect) {
-        controller.addRequest(new Request(quantity,hasHighQuality, hasDesignEffect));
-        JOptionPane.showMessageDialog(null,"Request is added successfully!");
-    }
-
-    private void clearInput(){
-        textField1.setText("");
-        highQualityPaperCheckBox.setSelected(false);
-        designEffectCheckBox.setSelected(false);
-    }
-
-
     public static void main(String[] args) {
         JFrame frame = new JFrame("PrintForm");
         frame.setContentPane(new PrintForm().panel1);
@@ -79,5 +70,16 @@ public class PrintForm {
         frame.pack();
         frame.setSize(500, 500);
         frame.setVisible(true);
+    }
+
+    private void addRequest(int quantity, boolean hasHighQuality, boolean hasDesignEffect) {
+        controller.addRequest(new Request(quantity, hasHighQuality, hasDesignEffect));
+        JOptionPane.showMessageDialog(null, "Request is added successfully!");
+    }
+
+    private void clearInput() {
+        textField1.setText("");
+        highQualityPaperCheckBox.setSelected(false);
+        designEffectCheckBox.setSelected(false);
     }
 }

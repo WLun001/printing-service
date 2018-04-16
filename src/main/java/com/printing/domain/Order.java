@@ -31,13 +31,13 @@ public class Order {
     }
 
     public void setPrinter(IPrintable printer) {
-        if(printer == null)
+        if (printer == null)
             throw new NullPointerException("Printer cannot be null");
         this.printer = printer;
     }
 
     public void sendToPrinter() {
-        for(Request request: requestList.getRequestList()) {
+        for (Request request : requestList.getRequestList()) {
             printer.queueRequest();
         }
     }

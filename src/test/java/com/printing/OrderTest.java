@@ -1,34 +1,33 @@
 package com.printing;
 
- import com.printing.domain.Order;
- import com.printing.domain.Request;
- import com.printing.domain.RequestList;
- import junit.framework.TestSuite;
- import org.junit.Before;
- import org.junit.Test;
+import com.printing.domain.Order;
+import com.printing.domain.Request;
+import com.printing.domain.RequestList;
+import junit.framework.TestSuite;
+import org.junit.Before;
+import org.junit.Test;
 import org.junit.runner.RunWith;
- import org.mockito.InjectMocks;
- import org.mockito.Mock;
- import org.mockito.runners.MockitoJUnitRunner;
+import org.mockito.InjectMocks;
+import org.mockito.Mock;
+import org.mockito.runners.MockitoJUnitRunner;
 
- import static junit.framework.TestCase.assertEquals;
- import static org.mockito.Mockito.times;
- import static org.mockito.Mockito.verify;
+import static junit.framework.TestCase.assertEquals;
+import static org.mockito.Mockito.times;
+import static org.mockito.Mockito.verify;
 
 @RunWith(MockitoJUnitRunner.class)
 public class OrderTest extends TestSuite {
 
     private Request request;
+    @InjectMocks
+    private Order order = new Order();
+    @Mock
+    private RequestList requestList;
 
     @Before
     public void setup() {
         request = new Request(10, true, false);
     }
-
-    @InjectMocks
-    private Order order = new Order();
-    @Mock
-    private RequestList requestList;
 
     /**
      * Test the method inside addRequest had been run one time

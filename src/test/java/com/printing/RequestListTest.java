@@ -40,5 +40,4 @@ public class RequestListTest extends TestSuite {
         requestList.addRequest(new Request(10, true, true));
         assertSame(1, requestList.getNumberOfRequest());
     }
-
 }
