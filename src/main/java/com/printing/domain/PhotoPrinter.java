@@ -6,6 +6,10 @@ public class PhotoPrinter implements IPrintable {
 
     private ArrayList<Request> requests;
 
+    public PhotoPrinter(){
+        requests = new ArrayList<>();
+    }
+
     @Override
     public void queueRequest(Request request) {
         requests.add(request);

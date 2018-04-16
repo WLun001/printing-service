@@ -1,6 +1,8 @@
 package com.printing;
 
 import com.printing.domain.AppController;
+import com.printing.domain.IPrintable;
+import com.printing.domain.PhotoPrinter;
 import com.printing.domain.Request;
 import junitparams.JUnitParamsRunner;
 import junitparams.Parameters;
@@ -52,7 +54,16 @@ public class AppControllerIntegrationTest {
 
 
     @Test
-    public void testQueueRequest() {
+    @Parameters(method = "paramsQueueRequest")
+    public void testQueueRequest(int requestQty, int paperQty, boolean hasHighQualityPaper, boolean hasDesignEffect, int expectedRequest) {
+        IPrintable printer = new PhotoPrinter();
+        for (int i = 0; i < requestQty; i++) {
+            controller.addRequest(new Request(paperQty, hasHighQualityPaper, hasDesignEffect));
+        }
+        controller.submitRequest();
+        controller.setPrinter(printer);
+        controller.sendToPrinter();
+        assertEquals(controller.getNumberOfRequest(), ((PhotoPrinter)printer).getRequests().size());
 
     }
 
@@ -82,4 +93,13 @@ public class AppControllerIntegrationTest {
                 new Object[]{4, 4, true, false, 12.8},
                 new Object[]{10, 5, true, false, 10.0}
         };
-    }}
+    }
+
+    private Object[] paramsQueueRequest() {
+        return new Object[]{
+                new Object[]{1, 1, true, false, 1},
+                new Object[]{4, 4, true, false, 16},
+                new Object[]{10, 5, true, false, 50}
+        };
+    }
+}
