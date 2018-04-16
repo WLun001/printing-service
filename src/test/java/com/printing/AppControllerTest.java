@@ -1,8 +1,6 @@
 package com.printing;
 
-import com.printing.domain.AppController;
-import com.printing.domain.Order;
-import com.printing.domain.Request;
+import com.printing.domain.*;
 import junit.framework.TestSuite;
 import org.junit.Before;
 import org.junit.Test;
@@ -16,6 +14,7 @@ import org.mockito.runners.MockitoJUnitRunner;
 import java.util.List;
 
 import static junit.framework.TestCase.assertEquals;
+import static junit.framework.TestCase.assertSame;
 import static org.mockito.Mockito.times;
 import static org.mockito.Mockito.verify;
 
@@ -82,6 +81,15 @@ public class AppControllerTest extends TestSuite {
         assertEquals(10, controller.getNumberOfRequest());
     }
 
+    @Test
+    public void testGetNumberOfPaper(){
+        AppController controller = new AppController();
+        controller.addRequest(new Request(10, true, true));
+        controller.addRequest(new Request(15, true, true));
+        assertEquals(25, controller.getNumberOfPaper());
+
+    }
+
     /**
      * Test the two methods inside submitRequest had been run one time by comparing the total
      * charge of the request added
@@ -104,4 +112,12 @@ public class AppControllerTest extends TestSuite {
         ac.getTotalCharge();
         verify(order, times(1)).getTotalCharge();
     }
+
+    @Test
+    public void testSetPrinter(){
+        IPrintable printer = new PhotoPrinter();
+        ac.setPrinter(printer);
+        verify(order, times(1)).setPrinter(printer);
+    }
+
 }

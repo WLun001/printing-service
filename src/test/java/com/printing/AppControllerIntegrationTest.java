@@ -52,7 +52,7 @@ public class AppControllerIntegrationTest {
 
 
     @Test
-    public void testPhotoPrinting() {
+    public void testQueueRequest() {
 
     }
 
