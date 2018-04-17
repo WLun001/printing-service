@@ -21,6 +21,7 @@ public class RequestTest extends TestSuite {
         order = new Order();
     }
 
+    // Check that the request object can be created successfully with valid values
     @Test
     @Parameters(method = "getValidParamsForTestPhotoOption")
     public void testPhotoOption(int quantity, boolean hasHighQualityPaper, boolean hasDesignEffect) {
@@ -30,6 +31,7 @@ public class RequestTest extends TestSuite {
         assertEquals(hasDesignEffect, order.getRequestList().get(0).hasDesignEffect());
     }
 
+    // Check that the request object can be created successfully with invalid values
     @Test(expected = IllegalArgumentException.class)
     @Parameters(method = "getInvalidParamsForTestPhotoOption")
     public void testPhotoQuantityInvalidValues(int quantity, boolean hasHighQualityPaper, boolean hasDesignEffect) {

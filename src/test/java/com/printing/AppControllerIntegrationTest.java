@@ -23,7 +23,7 @@ public class AppControllerIntegrationTest {
     }
 
     /**
-     * Test the method addRequest can be executed appropriately
+     * Test the Add Request button with valid values
      */
     @Test
     @Parameters(method = "paramsAddRequestValid")
@@ -38,7 +38,7 @@ public class AppControllerIntegrationTest {
     }
 
     /**
-     * Test the method addRequest can be executed appropriately with invalid values
+     * Test the Add Request button with invalid values
      */
     @Test(expected = IllegalArgumentException.class)
     @Parameters(method = "paramsAddRequestInvalid")
@@ -49,10 +49,10 @@ public class AppControllerIntegrationTest {
     }
 
     /**
-     * Test the method computeCharge can be executed appropriately
+     * Test the Compute Charge button
      */
     @Test
-    @Parameters(method = "paramsComputeChargeValid")
+    @Parameters(method = "paramsComputeCharge")
     public void testComputeCharge(int requestQty, int paperQty, boolean hasHighQualityPaper, boolean hasDesignEffect, double expectedPrice) {
         for (int i = 0; i < requestQty; i++) {
             controller.addRequest(new Request(paperQty, hasHighQualityPaper, hasDesignEffect));
@@ -63,7 +63,7 @@ public class AppControllerIntegrationTest {
 
 
     /**
-     * Test the method queueRequest can be executed appropriately
+     * Test the Print button
      */
     @Test
     @Parameters(method = "paramsQueueRequest")
@@ -98,7 +98,7 @@ public class AppControllerIntegrationTest {
         };
     }
 
-    public Object[] paramsComputeChargeValid() {
+    public Object[] paramsComputeCharge() {
         return new Object[]{
                 new Object[]{1, 1, true, false, 1.1},
                 new Object[]{4, 4, true, false, 12.8},

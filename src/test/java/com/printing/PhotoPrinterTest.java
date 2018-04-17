@@ -15,7 +15,7 @@ import static org.junit.Assert.assertEquals;
 public class PhotoPrinterTest extends TestSuite {
 
     /**
-     * Test the method queueRequest can be executed appropriately
+     * Check that the quantity of request sent to the printer is same as the quantity of request added by the user
      */
     @Test
     public void testQueueRequest() {

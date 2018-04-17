@@ -22,7 +22,7 @@ public class RequestListTest extends TestSuite {
     }
 
     /**
-     * Test the method addRequest can be executed appropriately
+     * Check the request really can be added successfully
      */
     @Test
     public void testAddRequest() {
@@ -32,7 +32,7 @@ public class RequestListTest extends TestSuite {
     }
 
     /**
-     * Test the method getRequest can be executed appropriately
+     * Check the request list really can be retrieved successfully
      */
     @Test
     public void testGetRequestList() {
@@ -42,7 +42,7 @@ public class RequestListTest extends TestSuite {
     }
 
     /**
-     * Test the method getNumberOfRequest can be executed appropriately
+     * Check the number of requests really can be obtained successfully
      */
     @Test
     public void testGetNumberOfRequest() {
