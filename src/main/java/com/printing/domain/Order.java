@@ -51,6 +51,15 @@ public class Order {
     }
 
     /**
+     * get printer
+     *
+     * @return printer
+     */
+    public IPrintable getPrinter() {
+        return printer;
+    }
+
+    /**
      * set printer
      *
      * @param printer printer to set
