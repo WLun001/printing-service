@@ -38,7 +38,7 @@ public class ComputationTest extends TestSuite {
     }
 
     /**
-     * Test the method receiveRequest with invalid values
+     * Test the method receiveRequest can be executed appropriately with invalid values
      */
     @Test(expected = IllegalArgumentException.class)
     public void testReceiveRequestsInvalidValues() {

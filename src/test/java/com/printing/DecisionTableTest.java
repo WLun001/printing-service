@@ -93,7 +93,7 @@ public class DecisionTableTest extends TestSuite {
     }
 
     /**
-     * Test the method addRequest invalid values
+     * Test the method addRequest with invalid values
      */
     @Test(expected = IllegalArgumentException.class)
     public void testAddOneRequestInvalidValues() {

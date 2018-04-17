@@ -38,7 +38,7 @@ public class OrderTest extends TestSuite {
     }
 
     /**
-     * Test the method inside setTotalCharge and getTotalCharge can be executed appropriately
+     * Check that the total charge can be set and get successfully
      */
     @Test
     public void testSetAndGetTotalCharge() {
