@@ -47,6 +47,9 @@ public class OrderTest extends TestSuite {
         assertEquals(20.0, order1.getTotalCharge());
     }
 
+    /**
+     * Test the method inside getRequestList had been run one time
+     */
     @Test
     public void testGetRequestList() {
         order.getRequestList();
@@ -54,6 +57,9 @@ public class OrderTest extends TestSuite {
 
     }
 
+    /**
+     * Check that the printer can be set and get successfully
+     */
     @Test
     public void testSetAndGetPrinter() {
         IPrintable printer = new PhotoPrinter();
@@ -62,6 +68,19 @@ public class OrderTest extends TestSuite {
         assertSame(printer, order1.getPrinter());
     }
 
+    /**
+     * Test the method setPrinter can be executed appropriately with invalid values
+     */
+    @Test(expected = NullPointerException.class)
+    public void testSetPrinterInvalid() {
+        Order order1 = new Order();
+        order1.setPrinter(null);
+    }
+
+    /**
+     * Check that the request can be sent to printer successfully by comparing the number of requests sent
+     * by Order and received by PhotoPrinter
+     */
     @Test
     public void testSendToPrinter() {
         IPrintable printer = new PhotoPrinter();
@@ -70,6 +89,5 @@ public class OrderTest extends TestSuite {
         order1.setPrinter(printer);
         order1.sendToPrinter();
         assertEquals(order1.getRequestList().size(), ((PhotoPrinter) printer).getRequests().size());
-
     }
 }

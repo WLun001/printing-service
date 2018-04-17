@@ -10,6 +10,7 @@ import org.junit.Test;
 import org.junit.runner.RunWith;
 
 import static junit.framework.TestCase.assertEquals;
+import static junit.framework.TestCase.assertNotNull;
 
 @RunWith(JUnitParamsRunner.class)
 public class RequestTest extends TestSuite {
@@ -19,6 +20,13 @@ public class RequestTest extends TestSuite {
     @Before
     public void setup() {
         order = new Order();
+    }
+
+    // Check that the id of request object can be created successfully after instantiated
+    @Test
+    public void testRequestId() {
+        Request request = new Request(1, true, true);
+        assertNotNull(request.getId());
     }
 
     // Check that the request object can be created successfully with valid values

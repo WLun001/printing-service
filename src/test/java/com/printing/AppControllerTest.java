@@ -78,6 +78,10 @@ public class AppControllerTest extends TestSuite {
         assertEquals(10, controller.getNumberOfRequest());
     }
 
+    /**
+     * Test the method inside getNumberOfPaper had been run one time by comparing the total number of papers
+     * from all requests that are added to the ArrayList<Request>
+     */
     @Test
     public void testGetNumberOfPaper() {
         AppController controller = new AppController();
