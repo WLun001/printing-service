@@ -3,13 +3,9 @@ package com.printing;
 import com.printing.domain.AppController;
 import com.printing.domain.Request;
 import junit.framework.TestSuite;
-import junitparams.JUnitParamsRunner;
-import junitparams.Parameters;
 import org.junit.AfterClass;
-import org.junit.Before;
 import org.junit.BeforeClass;
 import org.junit.Test;
-import org.junit.runner.RunWith;
 
 import java.io.File;
 import java.io.FileNotFoundException;

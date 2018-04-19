@@ -87,31 +87,31 @@ public class DecisionTableParameterised {
                 new Object[]{101, true, true},
                 new Object[]{0, true, false},
                 new Object[]{101, true, false},
-                new Object[]{0,false, true},
-                new Object[]{101,false, true},
-                new Object[]{0,false, false},
-                new Object[]{101,false, false}
+                new Object[]{0, false, true},
+                new Object[]{101, false, true},
+                new Object[]{0, false, false},
+                new Object[]{101, false, false}
         };
     }
 
-        public Object[] getParamsForTestAddMultipleRequestsValidValues() {
-            return new Object[]{
-                    new Object[]{1, 1, true, false, 1.1},
-                    new Object[]{4, 4, true, false, 12.8},
-                    new Object[]{10, 5, true, false, 10.0}
-            };
-        }
+    public Object[] getParamsForTestAddMultipleRequestsValidValues() {
+        return new Object[]{
+                new Object[]{1, 1, true, false, 1.1},
+                new Object[]{4, 4, true, false, 12.8},
+                new Object[]{10, 5, true, false, 10.0}
+        };
+    }
 
     public Object[] getParamsForTestAddMultipleRequestsInvalidValues() {
         return new Object[]{
-                new Object[]{2,0, true, true},
-                new Object[]{2,101,true, true},
-                new Object[]{2,0,true, false},
-                new Object[]{2,101,true, false},
-                new Object[]{2,0,false, true},
-                new Object[]{2,101,false, true},
-                new Object[]{2,0,false, false},
-                new Object[]{2,101,false, false}
+                new Object[]{2, 0, true, true},
+                new Object[]{2, 101, true, true},
+                new Object[]{2, 0, true, false},
+                new Object[]{2, 101, true, false},
+                new Object[]{2, 0, false, true},
+                new Object[]{2, 101, false, true},
+                new Object[]{2, 0, false, false},
+                new Object[]{2, 101, false, false}
         };
     }
 }
