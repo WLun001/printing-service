@@ -83,16 +83,12 @@ public class DecisionTableParameterised {
 
     public Object[] getParamsForTestAddOneRequestsInvalidValues() {
         return new Object[]{
-                new Object[]{-1, true, true},
                 new Object[]{0, true, true},
                 new Object[]{101, true, true},
-                new Object[]{-1, true, false},
                 new Object[]{0, true, false},
                 new Object[]{101, true, false},
-                new Object[]{-1, false, true},
                 new Object[]{0,false, true},
                 new Object[]{101,false, true},
-                new Object[]{-1, false, false},
                 new Object[]{0,false, false},
                 new Object[]{101,false, false}
         };
@@ -108,16 +104,12 @@ public class DecisionTableParameterised {
 
     public Object[] getParamsForTestAddMultipleRequestsInvalidValues() {
         return new Object[]{
-                new Object[]{2,-1, true, true},
                 new Object[]{2,0, true, true},
                 new Object[]{2,101,true, true},
-                new Object[]{2,-1, true, false},
                 new Object[]{2,0,true, false},
                 new Object[]{2,101,true, false},
-                new Object[]{2,-1, false, true},
                 new Object[]{2,0,false, true},
                 new Object[]{2,101,false, true},
-                new Object[]{2,-1, false, false},
                 new Object[]{2,0,false, false},
                 new Object[]{2,101,false, false}
         };
