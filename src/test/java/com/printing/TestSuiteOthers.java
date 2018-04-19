@@ -7,7 +7,7 @@ import org.junit.runners.Suite;
 @RunWith(value = Suite.class)
 @Suite.SuiteClasses(value = {
         PhotoPrinterTest.class, ComputationTest.class,
-        DecisionTableTest.class
+        DecisionTableTestReadFromFile.class
 })
 public class TestSuiteOthers {
 }
