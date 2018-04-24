@@ -82,10 +82,12 @@ public class AppControllerIntegrationTest {
         return new Object[]{
                 new Object[]{1, 1, true, true},
                 new Object[]{5, 5, true, true},
-                new Object[]{9, 12, false, true},
-                new Object[]{11, 55, false, true},
-                new Object[]{13, 77, false, false},
-                new Object[]{15, 99, false, true}
+                new Object[]{1, 1, false, true},
+                new Object[]{5, 5, false, true},
+                new Object[]{1, 1, false, false},
+                new Object[]{5, 5, false, false},
+                new Object[]{1, 1, false, true},
+                new Object[]{5, 5, false, true}
 
         };
     }
@@ -93,8 +95,8 @@ public class AppControllerIntegrationTest {
     public Object[] paramsAddRequestInvalid() {
         return new Object[]{
                 new Object[]{1, -1, true, true},
-                new Object[]{9, 0, false, true},
-                new Object[]{11, 101, false, true},
+                new Object[]{9, 0, true, true},
+                new Object[]{11, 101, true, true},
         };
     }
 
@@ -102,7 +104,7 @@ public class AppControllerIntegrationTest {
         return new Object[]{
                 new Object[]{1, 1, true, false, 1.1},
                 new Object[]{4, 4, true, false, 12.8},
-                new Object[]{10, 5, true, false, 10.0}
+                new Object[]{10, 5, true, false, 30.0}
         };
     }
 

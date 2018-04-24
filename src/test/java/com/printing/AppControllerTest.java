@@ -100,7 +100,7 @@ public class AppControllerTest extends TestSuite {
         AppController controller = new AppController();
         controller.addRequest(request);
         controller.submitRequest();
-        assertEquals(8.0, controller.getTotalCharge());
+        assertEquals(10.0, controller.getTotalCharge());
     }
 
     /**
