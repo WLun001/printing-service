@@ -98,7 +98,7 @@ public class DecisionTableParameterised {
         return new Object[]{
                 new Object[]{1, 1, true, false, 1.1},
                 new Object[]{4, 4, true, false, 12.8},
-                new Object[]{10, 5, true, false, 10.0}
+                new Object[]{10, 5, true, false, 30.0}
         };
     }
 
