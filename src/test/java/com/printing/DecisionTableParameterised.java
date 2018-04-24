@@ -74,7 +74,7 @@ public class DecisionTableParameterised {
                 new Object[]{51, true, true, 15.3}, new Object[]{100, true, true, 30.0},
                 new Object[]{1, false, false, 1.0}, new Object[]{4, false, false, 4.0}, new Object[]{5, false, false, 4.5}, new Object[]{10, false, false, 9.0},
                 new Object[]{11, false, false, 7.7}, new Object[]{20, false, false, 14.0}, new Object[]{21, false, false, 10.5}, new Object[]{50, false, false, 25.0},
-                new Object[]{51, false, false, 5.1}, new Object[]{100, false, false, 4.0},
+                new Object[]{51, false, false, 5.1}, new Object[]{100, false, false, 10.0},
                 new Object[]{1, false, true, 1.1}, new Object[]{4, false, true, 4.4}, new Object[]{5, false, true, 5.0}, new Object[]{10, false, true, 10.0},
                 new Object[]{11, false, true, 8.8}, new Object[]{20, false, true, 16.0}, new Object[]{21, false, true, 12.6}, new Object[]{50, false, true, 30.0},
                 new Object[]{51, false, true, 10.2},  new Object[]{100, false, true, 20.0},
